@@ -1,0 +1,24 @@
+# ══════════════════════════════════════════════════════════════════════════
+# BESCHAFFUNG — Volltexte, die DERZEIT nicht beschafft werden können
+#
+# Alles, was in einem Rechercheprotokoll steht, keinen Volltext hat und HIER
+# NICHT steht, gilt als „steht aus“ und wird vom Wächter bei jedem Commit
+# genannt. Was hier steht, wird getrennt davon als „nicht beschaffbar“
+# genannt, mit Grund. So ist immer klar, WARUM etwas fehlt:
+#
+#     ·   steht aus            noch nicht versucht oder noch nicht erledigt
+#     ⛔  nicht beschaffbar     versucht, derzeit kein Zugang — Grund unten
+#
+# Pflichtfelder: schluessel (aus literatur.bib), grund.
+# Empfohlen: versucht_am, versucht_ueber.
+# Sobald der Volltext doch vorliegt, meldet der Wächter den Eintrag als
+# überholt — dann hier löschen.
+#
+# Beispiel:
+#   - schluessel: Mustermann2020
+#     grund: "Bezahlschranke, über die Hochschulbibliothek nicht freigeschaltet"
+#     versucht_am: <JJJJ-MM-TT>
+#     versucht_ueber: Hochschulbibliothek
+# ══════════════════════════════════════════════════════════════════════════
+
+nicht_beschaffbar: []

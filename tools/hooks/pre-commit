@@ -1,0 +1,13 @@
+#!/bin/sh
+# Wächter und Tests vor jedem Commit.
+#
+# Einmalig nach dem Klonen einrichten:   git config core.hooksPath tools/hooks
+# Einmalig umgehen (bewusst!):          git commit --no-verify
+#
+# Erst prüft tools/pruefe.py Auswertungen, Register, Bestand und Verweise,
+# dann prüfen die Tests in tests/ die Werkzeuge selbst.
+
+set -e
+wurzel="$(git rev-parse --show-toplevel)"
+python3 "$wurzel/tools/pruefe.py" --leise
+cd "$wurzel" && python3 -m unittest discover -s tests -t . -q

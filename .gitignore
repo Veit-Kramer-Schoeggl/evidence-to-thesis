@@ -1,0 +1,26 @@
+# Volltexte: nie versionieren (Urheberrecht)
+literatur/**/pdf/
+
+# Exporte aus Suchdiensten mit eingeschränkter Lizenz
+notes/recherche/exporte/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# LaTeX-Nebenprodukte
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Editor und System
+.DS_Store
+.idea/
+.vscode/

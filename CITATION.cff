@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Wenn du dieses Kit in deiner Arbeit erwähnst, zitiere es bitte so."
+title: "evidence-to-thesis: Arbeitsgerüst für Abschlussarbeiten, von der Quelle über die Zahl zum Text"
+authors:
+  - family-names: "Kramer-Schöggl"
+    given-names: "Veit"
+license: MIT
+repository-code: "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis"
+type: software
+keywords:
+  - Abschlussarbeit
+  - Literaturauswertung
+  - wissenschaftliches Arbeiten
+  - KI-Protokoll

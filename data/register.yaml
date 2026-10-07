@@ -1,0 +1,26 @@
+# ══════════════════════════════════════════════════════════════════════════
+# ZAHLENREGISTER — jede Zahl aus einer Quelle, die in Rechnung oder Text wandert
+#
+# Optional. Wer Zahlen aus Studien weiterverwendet (in einer eigenen Rechnung
+# oder im Text), trägt sie hier ein, mit Fundstelle. Der Wächter prüft:
+#   - der Zitierschlüssel steht in literatur.bib,
+#   - die Auswertung existiert und nennt die ID in ihrer **Register:**-Zeile,
+#   - jeder Wert hat eine Fundstelle,
+#   - Status: in Arbeit | geprüft
+#   - Belastbarkeit: tragend | eingeschränkt | nicht belastbar
+#
+# Aufbau eines Eintrags (Platzhalter in spitzen Klammern):
+#   - id: <Schlüssel>-<kurzname>
+#     schluessel: <Schlüssel>
+#     auswertung: literatur/<kategorie>/<Schlüssel>_auswertung.md
+#     status: in Arbeit
+#     belastbarkeit: eingeschränkt
+#     werte:
+#       - name: <was gemessen wurde>
+#         wert: <Zahl>
+#         einheit: <Einheit>
+#         ki95: [<untere Grenze>, <obere Grenze>]
+#         fundstelle: "<Tab. 2, S. 6>"
+# ══════════════════════════════════════════════════════════════════════════
+
+eintraege: []
