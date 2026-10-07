@@ -103,7 +103,8 @@ flowchart TD
    python3 tools/neu.py auswertung mein-thema <Schlüssel>
    ```
    Prüfliste abarbeiten, Kernaussage mit Link ins Sammeldokument unter „Was
-   sich abzeichnet“, neue Fragen in dessen Fragenteil.
+   sich abzeichnet“, neue Fragen in dessen Fragenteil. Kennst du die Vorlage
+   schon, lässt `--knapp` die Optionen und Beispiele weg.
 7. **Entscheiden und festhalten:**
    - Weichenstellungen kommen nach `ENTSCHEIDUNGEN.md`.
    - Der Stand der Arbeit kommt nach `STAND.md`.
@@ -115,6 +116,7 @@ flowchart TD
 
 ```
 ├── README.md            diese Anleitung
+├── BACKLOG.md           was aus der Bachelorarbeit noch ins Kit kommen könnte
 ├── CLAUDE.md            Arbeitsregeln für den KI-Assistenten
 ├── ENTSCHEIDUNGEN.md    Entscheidungen mit Begründung
 ├── STAND.md             Stand, offene Entscheidungen, nächste Schritte
@@ -126,7 +128,7 @@ flowchart TD
 │   └── recherche/       Rechercheprotokolle, beschaffung.yaml
 ├── data/register.yaml   Zahlenregister (optional)
 ├── arbeit/              der Text der Arbeit (LaTeX oder Word)
-├── vorlagen/            Vorlagen für Auswertung, Sammeldokument, Protokoll, Entscheidung, KI-Eintrag
+├── vorlagen/            Vorschläge mit Optionen und Beispielen: Auswertung, Sammeldokument, Protokoll, Entscheidung, KI-Eintrag
 ├── tools/               Werkzeuge und der Hook vor dem Commit
 └── tests/               Tests der Werkzeuge
 ```
@@ -135,7 +137,7 @@ flowchart TD
 
 | Skript | tut |
 |---|---|
-| `tools/neu.py` | legt Kategorie, Auswertung oder Protokoll aus den Vorlagen an |
+| `tools/neu.py` | legt Kategorie, Auswertung oder Protokoll aus den Vorlagen an; mit `--knapp` ohne Optionen und Beispiele |
 | `tools/doi2bib.py` | DOI → BibTeX-Eintrag über Crossref, einheitlicher Zitierschlüssel |
 | `tools/holpdf.py` | legale freie Volltexte über Unpaywall und Europe PMC |
 | `tools/status.py` | setzt `·` `📄` `✅` `⛔` hinter jede DOI, aus dem Dateibestand abgeleitet |
@@ -144,6 +146,25 @@ flowchart TD
 | `tools/pruefe.py` | der Wächter: Prüflisten, Register, Bestand, Verweise |
 
 Alle Werkzeuge brauchen nur Python 3 und PyYAML.
+
+## Vorlagen anpassen
+
+Die Vorlagen in `vorlagen/` sind Vorschläge. Jeder Abschnitt bietet Optionen
+und ein erfundenes Beispiel; Zahlen darin sind Platzhalter. Übernimm, was dir
+hilft, und streich den Rest.
+
+Fest ist nur, was die Werkzeuge lesen:
+
+| Vorlage | fest |
+|---|---|
+| Auswertung | Kopfzeile mit Zweck und Status, Zeile **Register:**, Prüfliste, Pflichtabschnitte |
+| Sammeldokument | Abschnitt „Was sich abzeichnet“ |
+| Rechercheprotokoll | Zeile **Ablage:**, eine Kennung am Anfang jeder Trefferzeile |
+
+Prüfliste und Pflichtabschnitte liest der Wächter aus `vorlagen/auswertung.md`.
+Streichst du dort einen Punkt oder ergänzt einen, prüft er ab dann nach deiner
+Fassung. Auswertungen, denen ein neuer Punkt fehlt, nennt er: bei „in Arbeit“
+als Hinweis, bei „geprüft“ als Fehler.
 
 ## Mit einem KI-Assistenten arbeiten
 
@@ -164,24 +185,28 @@ ersetzt ihn aber nicht.
 ## Das Kit aktualisieren
 
 Ein Repository aus einer Vorlage hat eine eigene Historie und bekommt
-Änderungen am Kit nicht automatisch. Die Ordner des Kits holst du so nach:
+Änderungen am Kit nicht automatisch. Werkzeuge und Tests holst du so nach:
 
 ```bash
 git remote add kit https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis.git   # einmalig
 git fetch kit
-git checkout kit/main -- tools tests vorlagen
+git checkout kit/main -- tools tests
+git diff HEAD kit/main -- vorlagen       # neue Vorschläge in den Vorlagen ansehen
 git commit -m "Kit aktualisiert"
 ```
 
 Deine Inhalte bleiben dabei unberührt: `literatur/`, `notes/`, `data/`,
-`arbeit/` und die Dateien im Wurzelordner. Änderungen an `CLAUDE.md` oder am
-README übernimmst du bei Bedarf von Hand.
+`arbeit/` und die Dateien im Wurzelordner. Auch deine Vorlagen bleiben, wie
+sie sind. Was dir an neuen Vorschlägen gefällt, übernimmst du von Hand oder je
+Datei mit `git checkout kit/main -- vorlagen/<datei>`. Änderungen an
+`CLAUDE.md` oder am README übernimmst du ebenfalls von Hand.
 
 ## Mitmachen
 
 Verbesserungen sind willkommen: Fork anlegen, Änderung in einem eigenen Branch,
-dann einen Pull Request stellen. Für Fragen und Ideen gibt es die Issues. Den
-Hauptzweig `main` pflegt nur der Maintainer.
+dann einen Pull Request stellen. Für Fragen und Ideen gibt es die Issues. Was
+als Nächstes ins Kit kommen könnte, steht in `BACKLOG.md`. Den Hauptzweig
+`main` pflegt nur der Maintainer.
 
 ## Grenzen
 

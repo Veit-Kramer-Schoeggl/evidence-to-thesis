@@ -2,7 +2,9 @@
 # ZAHLENREGISTER — jede Zahl aus einer Quelle, die in Rechnung oder Text wandert
 #
 # Optional. Wer Zahlen aus Studien weiterverwendet (in einer eigenen Rechnung
-# oder im Text), trägt sie hier ein, mit Fundstelle. Der Wächter prüft:
+# oder im Text), trägt sie hier ein, mit Fundstelle. Wie weit, entscheidest du:
+# nur Zahlen, die in eine eigene Rechnung gehen, oder jede Zahl, die im Text
+# steht. Der Wächter prüft:
 #   - der Zitierschlüssel steht in literatur.bib,
 #   - die Auswertung existiert und nennt die ID in ihrer **Register:**-Zeile,
 #   - jeder Wert hat eine Fundstelle,

@@ -52,6 +52,12 @@ Auswertung mit Prüfliste (`literatur/<kategorie>/<Schlüssel>_auswertung.md`) �
 Sammeldokument → Entscheidung (`ENTSCHEIDUNGEN.md`) → Text (`arbeit/`).
 Den Stand und die nächsten Schritte hält `STAND.md` fest. Einzelheiten im README.
 
+**Vorlagen sind Vorschläge.** Beim Ausfüllen einer Vorlage schlägt der
+Assistent die Optionen vor, die zur Arbeit passen, statt jeden Abschnitt
+schematisch zu füllen. Die Blöcke **Optionen** und **Beispiel** kommen nach
+dem Ausfüllen weg. Fest ist nur, was die Werkzeuge lesen (README, Abschnitt
+„Vorlagen anpassen“).
+
 ## Sprache und Stil
 
 - Geschlechtergerecht formulieren.

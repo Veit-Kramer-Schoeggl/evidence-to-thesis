@@ -9,10 +9,12 @@ tools/hooks/pre-commit ruft dieses Skript und danach die Tests auf.
 
 Geprüft wird:
 
-  je Auswertung   Kopfzeile mit Status, Pflichtabschnitte, Prüfliste vollständig;
-                  bei Status „geprüft" zusätzlich Zweck eingetragen, alle Punkte
-                  abgehakt und die Auswertung im Sammeldokument unter „Was sich
-                  abzeichnet" verlinkt
+  je Auswertung   Kopfzeile mit Status und Zweck, Zeile `**Register:**`,
+                  Pflichtabschnitte und Prüfliste so, wie sie in der Vorlage
+                  vorlagen/auswertung.md stehen. Bei Status „in Arbeit" gibt es
+                  dazu nur Hinweise. Bei „geprüft" sind es Fehler, und zusätzlich
+                  müssen alle Punkte abgehakt sein und das Sammeldokument muss
+                  unter „Was sich abzeichnet" auf die Auswertung verlinken
   Register        data/register.yaml (optional): jeder Eintrag mit Zitierschlüssel
                   in literatur.bib, Rückverweis auf eine bestehende Auswertung,
                   Fundstelle bei jedem Wert, Belastbarkeit aus festem Katalog
@@ -36,13 +38,18 @@ REPO = Path(__file__).resolve().parent.parent
 LITERATUR = REPO / "literatur"
 REGISTER = REPO / "data" / "register.yaml"
 BIB = REPO / "literatur.bib"
+VORLAGE = REPO / "vorlagen" / "auswertung.md"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from verweise import ohne_code  # noqa: E402
 
-# Die Prüfliste, EINMAL festgelegt. Jede Auswertung führt jeden Punkt, erkannt am fett
-# gesetzten Anfang. Wer hier einen Punkt ergänzt, bekommt vom Wächter jede Datei genannt,
-# der er noch fehlt; so geht er in keinem einzelnen Kopf verloren.
-PRUEFLISTE = [
+# Prüfliste und Pflichtabschnitte stehen in der Vorlage vorlagen/auswertung.md: die Prüfliste
+# zwischen <!-- pruefliste:start --> und <!-- pruefliste:ende -->, erkannt am fett gesetzten
+# Anfang jedes Punkts, die Pflichtabschnitte im Kommentar <!-- pflichtabschnitte: … -->.
+# Wer die Vorlage ändert, ändert also, was der Wächter verlangt. Kommt ein Punkt dazu, nennt
+# der Wächter jede Auswertung, der er noch fehlt; so geht er in keinem einzelnen Kopf verloren.
+# Fehlt eine der Marken, gelten diese Standardlisten:
+PRUEFLISTE_STANDARD = [
     "Design und Qualität",
     "Exposition und Vergleich",
     "Endpunkte",
@@ -56,7 +63,7 @@ PRUEFLISTE = [
     "Aufgeworfene Fragen",
     "Zweck",
 ]
-PFLICHTABSCHNITTE = [
+PFLICHTABSCHNITTE_STANDARD = [
     "Fragestellung",
     "Design und Qualität",
     "Ergebnisse",
@@ -64,6 +71,19 @@ PFLICHTABSCHNITTE = [
     "Schwächen",
     "Was wir daraus nehmen",
 ]
+
+
+def aus_vorlage(pfad: Path = VORLAGE) -> tuple[list[str], list[str]]:
+    """Prüfliste und Pflichtabschnitte aus der Vorlage; wo eine Marke fehlt, die Standardliste."""
+    text = pfad.read_text(encoding="utf-8") if pfad.exists() else ""
+    m = re.search(r"<!-- pruefliste:start -->(.*?)<!-- pruefliste:ende -->", text, re.DOTALL)
+    liste = re.findall(r"^- \[[ xX]\] +\*\*(.+?)\*\*", m.group(1), re.MULTILINE) if m else PRUEFLISTE_STANDARD
+    m = re.search(r"<!-- pflichtabschnitte:(.*?)-->", text, re.DOTALL)
+    abschnitte = [a.strip() for a in m.group(1).split(",") if a.strip()] if m else PFLICHTABSCHNITTE_STANDARD
+    return list(liste), list(abschnitte)
+
+
+PRUEFLISTE, PFLICHTABSCHNITTE = aus_vorlage()
 STATUS = {"in Arbeit", "geprüft"}
 BELASTBARKEIT = {"tragend", "eingeschränkt", "nicht belastbar"}
 
@@ -120,30 +140,36 @@ def pruefe_auswertung(pfad: Path, register: dict[str, dict], b: Bericht) -> None
     status = m_status.group(1).strip() if m_status else None
     if status not in STATUS:
         b.fehlt(wo, f"Kopfzeile braucht `Status: **in Arbeit**` oder `Status: **geprüft**` (gefunden: {status!r})")
+    streng = status == "geprüft"
+
+    def melden(was: str) -> None:
+        """Bei „geprüft" ein Fehler, sonst ein Hinweis: Entwürfe blockieren keinen Commit."""
+        if streng:
+            b.fehlt(wo, was)
+        else:
+            b.hinweise.append(f"{wo}: {was}")
+
     m_zweck = re.search(r"Zweck \*\*([^*]+)\*\*", text)
     if not m_zweck or m_zweck.group(1).strip().startswith("<"):
-        if status == "geprüft":
-            b.fehlt(wo, "Kopfzeile ohne ausgefüllten `Zweck **…**` (wofür wird die Arbeit gebraucht?)")
-        else:
-            b.hinweise.append(f"{wo}: Zweck noch nicht eingetragen")
+        melden("Zweck noch nicht eingetragen: `Zweck **…**` in der Kopfzeile (wofür wird die Arbeit gebraucht?)")
 
     # ── Pflichtabschnitte ───────────────────────────────────────────────
     ueberschriften = [u.lower() for u in re.findall(r"^##+ +(.+?)\s*$", text, re.MULTILINE)]
     for pflicht in PFLICHTABSCHNITTE:
         if not any(pflicht.lower() in u for u in ueberschriften):
-            b.fehlt(wo, f"Abschnitt „{pflicht}\" fehlt")
+            melden(f"Abschnitt „{pflicht}\" fehlt")
 
     # ── Prüfliste ───────────────────────────────────────────────────────
     kaestchen = re.findall(r"^- \[( |x|X)\] +(.+?)\s*$", text, re.MULTILINE)
-    if not kaestchen:
-        b.fehlt(wo, "keine Prüfliste im Kopf (Vorlage: vorlagen/auswertung.md)")
-    else:
+    if PRUEFLISTE and not kaestchen:
+        melden("keine Prüfliste im Kopf (Vorlage: vorlagen/auswertung.md)")
+    elif kaestchen:
         vorhanden = {m.group(1) for m in (re.match(r"\*\*(.+?)\*\*", t) for _, t in kaestchen) if m}
         for punkt in PRUEFLISTE:
             if not any(v.startswith(punkt) for v in vorhanden):
-                b.fehlt(wo, f"Prüflistenpunkt fehlt ganz: **{punkt}**")
+                melden(f"Prüflistenpunkt fehlt ganz: **{punkt}**")
         offen = [t for h, t in kaestchen if h == " "]
-        if status == "geprüft":
+        if streng:
             for t in offen:
                 b.fehlt(wo, f"Status „geprüft\", aber Prüflistenpunkt offen: {t}")
         elif offen:
@@ -159,7 +185,7 @@ def pruefe_auswertung(pfad: Path, register: dict[str, dict], b: Bericht) -> None
             abschnitt = re.search(r"^## Was sich abzeichnet\s*$(.*?)(?=^## |\Z)", s, re.MULTILINE | re.DOTALL)
             if not abschnitt:
                 b.fehlt(wo, f"{sammel.name} hat keinen Abschnitt „Was sich abzeichnet\"")
-            elif not re.search(r"\(" + re.escape(pfad.name) + r"[)#]", abschnitt.group(1)):
+            elif not re.search(r"\(" + re.escape(pfad.name) + r"[)#]", ohne_code(abschnitt.group(1))):
                 b.fehlt(wo, f"„Was sich abzeichnet\" in {sammel.name} verweist nicht auf diese Auswertung")
 
     # ── Querverweis zum Register ────────────────────────────────────────
