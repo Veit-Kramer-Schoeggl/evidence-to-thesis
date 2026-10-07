@@ -50,15 +50,44 @@ git push                                     # zu GitHub hochladen
 git log --oneline                            # die letzten Stände ansehen
 ```
 
-### Was nicht ins Repository gehört
+### Was ins Repository gehört und was nicht
 
-- Volltexte, weil sie urheberrechtlich geschützt sind; die Ordner `pdf/` sind
-  ausgenommen.
-- Word- und PDF-Ausgaben deiner Arbeit; der Ordner `arbeit/ausgabe/` ist
-  ausgenommen.
-- Passwörter, deine E-Mail-Adresse und Daten über andere Personen.
-- Exporte aus Suchdiensten, deren Lizenz die Weitergabe verbietet; dafür gibt
-  es den ausgenommenen Ordner `notes/recherche/exporte/`.
+🚶 Du entscheidest, was gespeichert wird; 💻 Git hält sich dabei an die Datei
+[`.gitignore`](../.gitignore); 🤖 Claude Code trägt neue Ausnahmen für dich ein.
+
+**Die Datei `.gitignore`** liegt im Hauptordner. Jede Zeile nennt eine Datei,
+einen Ordner oder ein Muster, das Git nicht speichern soll. Diese Dateien
+bleiben auf deinem Rechner, kommen aber in keinen Commit und nicht zu GitHub.
+
+| gehört ins Repository | gehört nicht hinein und steht deshalb in `.gitignore` |
+|---|---|
+| der Text deiner Arbeit (`.tex`, `.md`) | Volltexte (`literatur/**/pdf/`): urheberrechtlich geschützt |
+| Auswertungen, Sammeldokumente, Rechercheprotokolle | Word- und PDF-Ausgaben (`arbeit/ausgabe/`): entstehen aus dem Text |
+| Zahlenregister, Literaturliste, Beschaffungsliste | Exporte aus Suchdiensten (`notes/recherche/exporte/`): Lizenz verbietet die Weitergabe |
+| Entscheidungen, Stand, KI-Protokoll, Merkliste | Zugangsdaten in einer Datei `.env` |
+| Programme, Tests und Vorlagen | Zwischendateien von LaTeX (`*.aux`, `*.log` …) und Python (`__pycache__/`) |
+| Abbildungen, die deine Programme erzeugen | Einstellungen von Editor und System (`.idea/`, `.vscode/`, `.DS_Store`) |
+
+**Nie ins Repository, auch nicht in ein privates:**
+
+- Passwörter, Zugangsschlüssel und deine E-Mail-Adresse;
+- Daten über Personen, etwa Interviews oder Gesundheitsdaten, solange die
+  Regeln deiner Hochschule das nicht ausdrücklich erlauben.
+
+**Eine Ausnahme ergänzen:** eine neue Zeile in `.gitignore`, etwa
+`interviews/` für einen ganzen Ordner oder `*.docx` für alle Word-Dateien. Ein
+`!` davor nimmt eine Datei wieder auf, etwa `!arbeit/vorlage.docx`.
+
+> „Nimm den Ordner interviews in die .gitignore auf.“
+
+**Prüfen, was gespeichert würde:** `git status` zeigt alle geänderten Dateien,
+die Git speichern würde. Warum eine Datei fehlt, zeigt
+`git check-ignore -v <datei>`.
+
+**Schon gespeichert?** `.gitignore` wirkt nur für Dateien, die noch nicht im
+Repository sind. Ist etwas versehentlich hineingeraten, bitte Claude Code, es
+herauszunehmen. War es ein Passwort oder ein Zugangsschlüssel, ändere es
+sofort: Im Verlauf steht es weiterhin, und nach einem Push auch bei GitHub.
 
 ## Der Wächter
 

@@ -232,6 +232,12 @@ sich geändert hat und warum. Ein gespeicherter Stand heißt *Commit*. Mit
   erarbeitet hast, auch dort, wo eine KI geholfen hat.
 - Geht dein Rechner kaputt, fehlt höchstens die Arbeit seit dem letzten Push.
 
+**Was ins Repository gehört:** dein Text, deine Notizen, Register, Programme.
+Was nicht hinein soll, also Volltexte, Ausgaben, Zwischendateien und
+Zugangsdaten, steht in der Datei [`.gitignore`](.gitignore); 💻 Git speichert
+es nicht. Mehr dazu, auch was tun, wenn etwas versehentlich hineingeraten ist:
+[Was ins Repository gehört und was nicht](ablauf/bei-jedem-schritt.md#was-ins-repository-gehört-und-was-nicht).
+
 Gute wissenschaftliche Praxis verlangt genau diese Nachvollziehbarkeit, etwa
 der Kodex der Deutschen Forschungsgemeinschaft in Leitlinie 12,
 „Dokumentation“; den Wortlaut zitiert die
@@ -279,6 +285,7 @@ Regeln, nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md)
 | [Vorlagen](ablauf/bausteine.md#die-vorlagen) 🚶 | gleicher Aufbau, damit nichts vergessen wird |
 | [Merkliste](ablauf/bausteine.md#die-merkliste) 🚶 🤖 | sammelt, was in den Text soll, bevor du schreibst |
 | [Linkprüfung](ablauf/bausteine.md#die-linkprüfung) 💻 | hält die Verweise zwischen den Dokumenten gültig |
+| [Ausnahmeliste `.gitignore`](ablauf/bausteine.md#die-ausnahmeliste-gitignore) 💻 | sorgt dafür, dass Volltexte, Ausgaben und Zugangsdaten nie gespeichert werden |
 
 ## Begriffe, kurz erklärt
 
@@ -322,6 +329,7 @@ Dateien da sind, erklärt [Die Bausteine und wozu sie da sind](ablauf/bausteine.
 ├── <a href="STAND.md">STAND.md</a>                              wo die Arbeit steht, was offen ist, was als Nächstes kommt
 ├── <a href="KI-PROTOKOLL.md">KI-PROTOKOLL.md</a>                       wofür du KI eingesetzt und was du selbst geprüft hast
 ├── <a href="literatur.bib">literatur.bib</a>                         die Literaturangaben, aus den DOIs geholt
+├── <a href="ablauf/bei-jedem-schritt.md#was-ins-repository-gehört-und-was-nicht">.gitignore</a>                            was Git nicht speichern soll
 ├── <a href="literatur/README.md">literatur/</a>                            ein Ordner je Thema, zum Beispiel:
 │   └── <a href="ablauf/1-recherche.md#1-ein-thema-anlegen">schlaf/</a>                           ein Thema
 │       ├── <a href="ablauf/4-sammeldokumente.md">schlaf.md</a>                     das Sammeldokument des Themas

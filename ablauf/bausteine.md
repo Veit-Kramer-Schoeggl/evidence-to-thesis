@@ -24,6 +24,7 @@ was hineinkommt.
 | [Die Vorlagen](#die-vorlagen) 🚶 | gleicher Aufbau, damit nichts vergessen wird |
 | [Die Merkliste](#die-merkliste) 🚶 🤖 | sammelt, was in den Text soll, bevor du schreibst |
 | [Die Linkprüfung](#die-linkprüfung) 💻 | hält die Verweise zwischen den Dokumenten gültig |
+| [Die Ausnahmeliste .gitignore](#die-ausnahmeliste-gitignore) 💻 | sorgt dafür, dass Volltexte, Ausgaben und Zugangsdaten nie gespeichert werden |
 
 Git und GitHub erklärt [Bei jedem Schritt](bei-jedem-schritt.md#git-ist-pflicht).
 
@@ -241,5 +242,18 @@ ruft es bei jedem Commit auf.
 **Wozu:** Die Dokumente verweisen aufeinander. Benennst du eine Datei um oder
 löschst einen Abschnitt, findet die Linkprüfung jeden Verweis, der danach ins
 Leere zeigt.
+
+## Die Ausnahmeliste .gitignore
+
+**Was:** die Datei [`.gitignore`](../.gitignore) im Hauptordner.
+
+**Wozu:** Sie sagt Git, was es nie speichern soll: Volltexte, Word- und
+PDF-Ausgaben, Exporte aus Suchdiensten, Zugangsdaten und Zwischendateien. So
+landen sie weder im Verlauf noch bei GitHub, auch wenn du alle Änderungen auf
+einmal speicherst.
+
+**Was hineinkommt:** je Zeile eine Datei, ein Ordner oder ein Muster. Was ins
+Repository gehört und was nicht, steht in
+[Bei jedem Schritt](bei-jedem-schritt.md#was-ins-repository-gehört-und-was-nicht).
 
 Zurück zur [Übersicht](../README.md)

@@ -1,18 +1,29 @@
-# Volltexte: nie versionieren (Urheberrecht)
+# ══════════════════════════════════════════════════════════════════════════
+# Was hier steht, speichert Git nicht. Die Dateien bleiben auf deinem Rechner,
+# kommen aber in keinen Commit und nicht zu GitHub. Erklärt in
+# ablauf/bei-jedem-schritt.md, Abschnitt „Was ins Repository gehört und was nicht“.
+# Eine Zeile je Datei, Ordner (mit / am Ende) oder Muster (* steht für beliebig);
+# ein ! davor nimmt etwas wieder auf.
+# ══════════════════════════════════════════════════════════════════════════
+
+# Volltexte: urheberrechtlich geschützt, nie versionieren
 literatur/**/pdf/
 
-# Ausgaben der Arbeit (Word, PDF): entstehen aus dem Text in arbeit/, nicht versionieren
+# Ausgaben der Arbeit (Word, PDF): entstehen aus dem Text in arbeit/
 arbeit/ausgabe/
 
-# Exporte aus Suchdiensten mit eingeschränkter Lizenz
+# Exporte aus Suchdiensten, deren Lizenz die Weitergabe verbietet
 notes/recherche/exporte/
 
-# Python
+# Zugangsdaten (Passwörter, Schlüssel): gehören nie ins Repository
+.env
+
+# Zwischendateien von Python
 __pycache__/
 *.pyc
 .venv/
 
-# LaTeX-Nebenprodukte
+# Zwischendateien von LaTeX
 *.aux
 *.bbl
 *.blg
@@ -23,7 +34,7 @@ __pycache__/
 *.fdb_latexmk
 *.fls
 
-# Editor und System
+# Einstellungen von Editor und System
 .DS_Store
 .idea/
 .vscode/
