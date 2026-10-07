@@ -1,5 +1,7 @@
 # 2 · Auswertung
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 **Worum es geht:** jede Arbeit genau lesen und festhalten, was sie zeigt, wie
 verlässlich sie es zeigt und was du für deine Arbeit daraus nimmst. Jede Zahl
 bekommt ihre Fundstelle.
@@ -8,6 +10,8 @@ bekommt ihre Fundstelle.
 `literatur/<thema>/<Zitierschlüssel>_auswertung.md`.
 
 ## 1. Die Auswertung anlegen
+
+💻 Ein Programm legt die Datei an; 🤖 Claude Code startet es für dich.
 
 > „Lege die Auswertung für Mustermann2020 im Thema schlaf an.“
 
@@ -25,6 +29,8 @@ python3 tools/neu.py --knapp auswertung schlaf Mustermann2020
 
 ## 2. Lesen und ausfüllen
 
+🤖 Claude Code kann eine erste Fassung schreiben; 🚶 lesen und prüfen tust du.
+
 - **Prüfliste:** oben in der Datei, Punkt für Punkt abarbeiten und abhaken.
 - **Fundstelle:** bei jeder Zahl Seite, Tabelle oder Abbildung.
 - **Belastbarkeit:** einstufen als tragend, eingeschränkt oder nicht belastbar,
@@ -39,6 +45,9 @@ Vergleichsgruppen.
 
 ## 3. Das Zahlenregister (wahlweise)
 
+🤖 Claude Code trägt ein, 🚶 du prüfst. Wozu es das Register gibt und was
+hineinkommt, steht in [Die Bausteine](bausteine.md#das-zahlenregister).
+
 Wandert eine Zahl in eine eigene Rechnung oder in deinen Text, trag sie in
 [`data/register.yaml`](../data/register.yaml) ein, mit Fundstelle. Die Auswertung nennt ihre Kennung
 dann in der Zeile **Register:**. So findest du später zu jeder Zahl im Text
@@ -46,11 +55,15 @@ heraus, woher sie stammt.
 
 ## 4. Ins Sammeldokument übertragen
 
+🤖 Claude Code entwirft, 🚶 du prüfst.
+
 Die Kernaussage kommt mit Link ins Sammeldokument des Themas, unter „Was sich
 abzeichnet“. Fragen, die beim Lesen entstanden sind, kommen in dessen
 Fragenteil. Mehr dazu in [4 · Sammeldokumente](4-sammeldokumente.md).
 
 ## Woran der Wächter dich erinnert
+
+💻 Bei jedem Commit, von selbst:
 
 - bei „in Arbeit“ nur mit Hinweisen: was noch offen ist;
 - bei „geprüft“ mit Fehlern, die den Commit aufhalten: jeder Punkt der

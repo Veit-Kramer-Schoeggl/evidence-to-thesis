@@ -10,7 +10,9 @@ liest hier zuerst.
 
 ## 1. Worum es geht
 
-Fragestellung in zwei, drei Sätzen. Abgabetermin, Umfang, Betreuung.
+Fragestellung in zwei, drei Sätzen. Abgabetermin, Umfang, Betreuung. Ob und
+wie du KI verwenden darfst, steht als erster Eintrag in
+[`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md).
 
 > **Beispiel:** „Wie hängt die Schlafdauer mit dem Studienerfolg zusammen?
 > Abgabe <Datum>, Umfang laut Leitfaden, Betreuung <Name>.“

@@ -10,11 +10,19 @@ der FH JOANNEUM. **Inoffiziell:** Das Kit ist keine Vorlage der Hochschule und
 ersetzt deren Leitfäden nicht. Wenn sich etwas widerspricht, gilt der
 Leitfaden. Das Kit ist mit Unterstützung von Claude Code entstanden.
 
+> **Bevor du anfängst:** Kläre, ob und wie du in deiner Arbeit KI verwenden
+> darfst. Das regeln deine Hochschule und deine Betreuung, nicht dieses Kit.
+> Wie du das klärst und was zu Plagiat und Eidesstattlicher Erklärung wichtig
+> ist, steht in [KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md).
+
 Dieses README ist die Übersicht über alles. Es folgt dem Ablauf unten; jede
 Überschrift führt zur ausführlichen Anleitung. Fachwörter erklärt der
 Abschnitt [Begriffe, kurz erklärt](#begriffe-kurz-erklärt).
 
-## Drei Grundsätze
+**Wer was macht:** 🚶 machst du selbst · 🤖 erledigt Claude Code für dich ·
+💻 erledigt ein Programm von selbst.
+
+## Vier Grundsätze
 
 1. **Jede Zahl hat eine Fundstelle:** Seite, Tabelle oder Abbildung, oder
    ausdrücklich „eigene Rechnung“, „Annahme“ oder „zu prüfen“.
@@ -23,6 +31,10 @@ Abschnitt [Begriffe, kurz erklärt](#begriffe-kurz-erklärt).
    gewählt hast.
 3. **Jeder Schritt bleibt nachvollziehbar:** Git speichert jeden Stand, und
    das KI-Protokoll hält fest, was die KI getan und was du selbst geprüft hast.
+4. **Nichts blind übernehmen:** Du liest alles, was Claude Code schreibt, und
+   prüfst jede Zahl am Original. Die Verantwortung für deine Arbeit trägst du;
+   warum das so wichtig ist, steht unter
+   [Nichts blind übernehmen](ablauf/ki-und-plagiat.md#3-nichts-blind-übernehmen).
 
 Vor jedem Commit prüft ein kleines Programm, der **Wächter**, ob das
 eingehalten ist, soweit sich das automatisch prüfen lässt.
@@ -33,22 +45,22 @@ eingehalten ist, soweit sich das automatisch prüfen lässt.
 flowchart TB
     subgraph PH["Ablauf · jeder Kasten führt zur Anleitung"]
         direction LR
-        P0["<b>0 · Einrichten</b><br/>einmalig: Konten,<br/>Claude Code, Repository,<br/>Prüfliste festlegen"]
-        P1["<b>1 · Recherche</b><br/>suchen, Treffer notieren,<br/>Volltexte holen"]
-        P2["<b>2 · Auswertung</b><br/>jede Arbeit lesen,<br/>Prüfliste durchgehen"]
-        P3["<b>3 · Modell</b><br/>eigene Rechnung,<br/>Kernzahlen, Abbildungen<br/>(wahlweise)"]
-        P4["<b>4 · Sammeldokumente</b><br/>Ergebnisse je Thema,<br/>offene Fragen"]
-        P5["<b>5 · Entscheidung</b><br/>Optionen abwägen,<br/>du entscheidest"]
-        P6["<b>6 · Schreiben</b><br/>Text in LaTeX<br/>oder Markdown"]
+        P0["<b>0 · Einrichten</b><br/>einmalig:<br/>KI-Regeln klären,<br/>Konten, Claude Code,<br/>Repository,<br/>Prüfliste festlegen<br/>🚶 🤖"]
+        P1["<b>1 · Recherche</b><br/>suchen, Treffer notieren,<br/>Volltexte holen<br/>🚶 🤖 💻"]
+        P2["<b>2 · Auswertung</b><br/>jede Arbeit lesen,<br/>Prüfliste durchgehen<br/>🤖 🚶"]
+        P3["<b>3 · Modell</b><br/>eigene Rechnung,<br/>Kernzahlen, Abbildungen<br/>(wahlweise)<br/>🤖 💻 🚶"]
+        P4["<b>4 · Sammeldokumente</b><br/>Ergebnisse je Thema,<br/>offene Fragen<br/>🤖 💻 🚶"]
+        P5["<b>5 · Entscheidung</b><br/>Optionen abwägen,<br/>du entscheidest<br/>🤖 🚶"]
+        P6["<b>6 · Schreiben</b><br/>Text in LaTeX<br/>oder Markdown<br/>🚶 🤖 💻"]
         P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6
         P5 -. "neue Frage" .-> P1
         P5 -. "Änderung am Modell" .-> P3
     end
     subgraph QS["Bei jedem Schritt"]
         direction LR
-        Q1["<b>Git</b> speichert jeden Stand<br/>mit Datum und Grund"]
-        Q2["<b>Wächter</b> prüft<br/>vor jedem Speichern"]
-        Q3["<b>KI-Protokoll</b> hält fest,<br/>was die KI getan hat"]
+        Q1["<b>Git</b> speichert jeden Stand<br/>mit Datum und Grund<br/>🤖"]
+        Q2["<b>Wächter</b> prüft<br/>vor jedem Speichern<br/>💻"]
+        Q3["<b>KI-Protokoll</b> hält fest,<br/>was die KI getan hat<br/>🤖 🚶"]
         Q1 ~~~ Q2 ~~~ Q3
     end
     PH -.- QS
@@ -70,9 +82,10 @@ flowchart TB
     class Q1,Q2,Q3 quer
 ```
 
-Ob sich die Kästen anklicken lassen, hängt davon ab, wo du das README liest;
-GitHub lässt Klicks in Diagrammen nicht überall zu. Die Überschriften unten
-führen in jedem Fall zu den Anleitungen.
+🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein
+Programm von selbst. Ob sich die Kästen anklicken lassen, hängt davon ab, wo du
+das README liest; GitHub lässt Klicks in Diagrammen nicht überall zu. Die
+Überschriften unten führen in jedem Fall zu den Anleitungen.
 
 ## [0 · Einrichten](ablauf/0-einrichten.md)
 
@@ -89,13 +102,16 @@ Einmal am Anfang. **Du brauchst:**
 **Die Schritte**, jeder mit Befehlen zum Kopieren für Windows, macOS und
 Linux:
 
-1. Konten bei GitHub und Claude anlegen.
-2. Git, Python, das GitHub-Programm `gh` und Claude Code installieren.
-3. Den Rechner mit GitHub verbinden.
-4. Aus dem Kit dein eigenes, privates Repository anlegen und den Wächter
+0. 🚶 **Klären, ob und wie du KI verwenden darfst,** vor allem anderen; siehe
+   [KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md).
+1. 🚶 Konten bei GitHub und Claude anlegen.
+2. 🚶 Git, Python, das GitHub-Programm `gh` und Claude Code installieren.
+3. 🚶 Den Rechner mit GitHub verbinden.
+4. 🚶 Aus dem Kit dein eigenes, privates Repository anlegen und den Wächter
    einschalten.
-5. Claude Code starten und prüfen lassen, ob alles bereit ist.
-6. Wahlweise: Volltexte automatisch holen lassen.
+5. 🤖 Claude Code starten und prüfen lassen, ob alles bereit ist.
+6. 🚶 Wahlweise: Volltexte automatisch holen lassen.
+7. 🤖 🚶 Die Prüfliste festlegen: Claude Code schlägt vor, du entscheidest.
 
 ### [Prüfliste festlegen](ablauf/pruefliste-festlegen.md)
 
@@ -111,16 +127,16 @@ nach Art der Studien.
 Arbeiten finden, festhalten, wie du gesucht hast, und die Volltexte legal
 beschaffen:
 
-1. **Ein Thema anlegen**, also einen Ordner unter `literatur/`, bei Bedarf mit
+1. 💻 **Ein Thema anlegen**, also einen Ordner unter `literatur/`, bei Bedarf mit
    Unterordnern für Teilthemen. Dabei entsteht sein Sammeldokument.
-2. **Ein Rechercheprotokoll anlegen** in `notes/recherche/`: womit, wann und
+2. 💻 **Ein Rechercheprotokoll anlegen** in `notes/recherche/`: womit, wann und
    wie du gesucht hast, die Suchanfrage wörtlich.
-3. **Suchen und Treffer eintragen**, je Treffer eine Zeile mit der DOI vorne.
-4. **Literaturangaben holen** in [`literatur.bib`](literatur.bib).
-5. **Volltexte holen**: frei verfügbare automatisch, alle anderen über die
-   Hochschulbibliothek. Was du nicht bekommst, kommt mit Grund in
+3. 🚶 🤖 **Suchen und Treffer eintragen**, je Treffer eine Zeile mit der DOI vorne.
+4. 💻 **Literaturangaben holen** in [`literatur.bib`](literatur.bib).
+5. 💻 🚶 **Volltexte holen**: frei verfügbare holt ein Programm, alle anderen
+   holst du über die Hochschulbibliothek. Was du nicht bekommst, kommt mit Grund in
    [`beschaffung.yaml`](notes/recherche/beschaffung.yaml).
-6. **Den Stand nachziehen.** Hinter jeder DOI steht dann, wie weit die Arbeit
+6. 💻 **Den Stand nachziehen.** Hinter jeder DOI steht dann, wie weit die Arbeit
    ist: `·` fehlt noch, 📄 Volltext da, ✅ ausgewertet, ⛔ nicht zu bekommen.
    Dieselbe Übersicht steht als Tabelle „Stand“ im Sammeldokument, dort mit der
    DOI bei jeder Arbeit, die noch zu holen ist.
@@ -136,18 +152,19 @@ Optionen und ein erfundenes Beispiel. Der Status „in Arbeit“ gilt, solange d
 liest; „geprüft“, wenn alles abgehakt und die Auswertung im Sammeldokument
 verlinkt ist.
 
-Claude Code kann aus dem Volltext eine erste Fassung schreiben. Jede Zahl
-prüfst du dann selbst im PDF. Wandert eine Zahl in eine eigene Rechnung oder
-in den Text, kommt sie mit Fundstelle ins Zahlenregister
+🤖 Claude Code kann aus dem Volltext eine erste Fassung schreiben. 🚶 Jede Zahl
+prüfst du dann selbst im PDF. 💻 Der Wächter prüft, ob die Auswertung
+vollständig ist. Wandert eine Zahl in eine eigene Rechnung oder in den Text,
+kommt sie mit Fundstelle ins [Zahlenregister](ablauf/bausteine.md#das-zahlenregister),
 [`data/register.yaml`](data/register.yaml).
 
 ## [3 · Modell](ablauf/3-modell.md)
 
 Wahlweise, für Arbeiten, die selbst rechnen: Kosten schätzen, ein Ergebnis auf
 eine andere Gruppe umrechnen, Zahlen mehrerer Studien zusammenfassen. Die
-Eingabewerte kommen mit Fundstelle aus dem Zahlenregister; gerechnet wird in
-einem Programm, nicht von Hand. Das Programm schreibt seine Ergebnisse selbst
-an markierte Stellen im Text und erzeugt die Abbildungen. Annahmen legst du
+Eingabewerte kommen mit Fundstelle aus dem Zahlenregister. 🤖 Claude Code baut
+das Programm, 💻 das Programm rechnet, schreibt seine Ergebnisse selbst an
+markierte Stellen im Text und erzeugt die Abbildungen. 🚶 Annahmen legst du
 offen, spielst sie an den Rändern ihrer Spanne durch und hältst sie in
 [`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md) fest. Rechnet deine Arbeit nicht,
 überspringst du diesen Schritt.
@@ -163,13 +180,14 @@ Je Thema eine Datei, die alles zusammenträgt:
 | Was sich abzeichnet | je geprüfter Auswertung die Kernaussage mit Link |
 | Fragen | jede Frage mit Kennung (F1, F2 …), bis sie beantwortet oder entschieden ist |
 
-Nichts verschwindet still: Eine erledigte Frage bekommt einen Befund und bleibt
-stehen. Vorlage: [`vorlagen/sammeldokument.md`](vorlagen/sammeldokument.md).
+💻 Die Tabelle „Stand“ schreibt ein Programm, 🤖 Claude Code entwirft
+Kurzfassung und Befunde, 🚶 du prüfst sie. Nichts verschwindet still: Eine
+erledigte Frage bekommt einen Befund und bleibt stehen. Vorlage: [`vorlagen/sammeldokument.md`](vorlagen/sammeldokument.md).
 
 ## [5 · Entscheidung](ablauf/5-entscheidung.md)
 
-An den Weichen deiner Arbeit zeigt Claude Code die Optionen mit Vor- und
-Nachteilen und einer Empfehlung; entscheiden tust du. Die Entscheidung kommt
+An den Weichen deiner Arbeit zeigt 🤖 Claude Code die Optionen mit Vor- und
+Nachteilen und einer Empfehlung; 🚶 entscheiden tust du. Die Entscheidung kommt
 mit Begründung nach [`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md), nach der Vorlage
 [`vorlagen/entscheidung.md`](vorlagen/entscheidung.md). Was offen ist und was
 als Nächstes kommt, steht in [`STAND.md`](STAND.md). Ändert sich eine
@@ -188,7 +206,11 @@ in `arbeit/` als Text:
   pandoc eine Word-Datei oder ein PDF, auf Wunsch mit der Word-Vorlage deiner
   Hochschule.
 
-**Word und PDF sind nur Ausgaben.** Du erzeugst sie aus dem Text in den Ordner
+🚶 Den Text schreibst du; 🤖 Claude Code hilft bei Entwürfen und prüft, was du
+geschrieben hast. Auch das legst du offen, siehe
+[KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md#5-offenlegen).
+
+**Word und PDF sind nur Ausgaben.** 💻 Du erzeugst sie aus dem Text in den Ordner
 `arbeit/ausgabe/`, bearbeitest sie nicht von Hand und legst sie nicht ins
 Repository. Was dir beim Lesen für den Text auffällt, sammelst du vorher in
 der [Merkliste](notes/merkliste.md). Mehr in [`arbeit/README.md`](arbeit/README.md).
@@ -213,12 +235,12 @@ sich geändert hat und warum. Ein gespeicherter Stand heißt *Commit*. Mit
 Gute wissenschaftliche Praxis verlangt genau diese Nachvollziehbarkeit, etwa
 der Kodex der Deutschen Forschungsgemeinschaft in Leitlinie 12,
 „Dokumentation“; den Wortlaut zitiert die
-[Anleitung](ablauf/bei-jedem-schritt.md#git-ist-pflicht). Claude Code
+[Anleitung](ablauf/bei-jedem-schritt.md#git-ist-pflicht). 🤖 Claude Code
 speichert und lädt hoch, wenn du es darum bittest.
 
 ### Der Wächter
 
-Vor jedem Commit prüft der Wächter die Auswertungen, das Zahlenregister, den
+💻 Vor jedem Commit prüft der Wächter die Auswertungen, das Zahlenregister, den
 Bestand an Protokollen, Volltexten und Auswertungen sowie alle Links. Findet
 er einen Fehler, hält er den Commit auf und sagt, was fehlt. Bei Entwürfen
 gibt er nur Hinweise.
@@ -232,9 +254,31 @@ mehr stimmt. Dafür sind die Prüfliste und dein eigener Blick da.
 Nach jedem Arbeitsgang mit KI kommt ein Eintrag in
 [`KI-PROTOKOLL.md`](KI-PROTOKOLL.md), nach der Vorlage
 [`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md): der
-Auftrag, was die KI getan hat, was du selbst am Original geprüft hast. Was an
-KI-Nutzung erlaubt ist, regelt der Leitfaden deiner Hochschule. Die Regeln,
-nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md).
+Auftrag, was die KI getan hat, was du selbst am Original geprüft hast. 🤖 Claude
+Code schreibt den Eintrag, 🚶 du ergänzt, was du geprüft hast. Was an
+KI-Nutzung erlaubt ist, regelt der Leitfaden deiner Hochschule, siehe
+[KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md). Die
+Regeln, nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md).
+
+## [Die Bausteine und wozu sie da sind](ablauf/bausteine.md)
+
+| Baustein | wozu, in einem Satz |
+|---|---|
+| [Hook](ablauf/bausteine.md#der-hook) 💻 | startet die Prüfung vor jedem Commit von selbst, damit sie nie vergessen wird |
+| [Wächter](ablauf/bausteine.md#der-wächter) 💻 | findet mechanische Fehler, bevor sie sich festsetzen |
+| [Tests](ablauf/bausteine.md#die-tests) 💻 | prüfen den Wächter und die Programme selbst |
+| [Zahlenregister](ablauf/bausteine.md#das-zahlenregister) 🤖 🚶 | eine Stelle für jede Zahl, die aus einer Studie weiterwandert |
+| [Literaturliste](ablauf/bausteine.md#die-literaturliste) 💻 | richtige Literaturangaben, ein Kurzname je Arbeit für alles |
+| [Rechercheprotokolle](ablauf/bausteine.md#die-rechercheprotokolle) 🚶 🤖 | machen deine Suche wiederholbar |
+| [Beschaffungsliste](ablauf/bausteine.md#die-beschaffungsliste) 🚶 | trennt „noch nicht versucht“ von „nicht zu bekommen“ |
+| [Sammeldokumente](ablauf/bausteine.md#die-sammeldokumente) 🤖 🚶 | alles zu einem Thema an einem Ort |
+| [Entscheidungen](ablauf/bausteine.md#die-entscheidungen) 🚶 🤖 | beantworten später die Frage „Warum so?“ |
+| [Stand](ablauf/bausteine.md#der-stand) 🤖 🚶 | der Wiedereinstieg nach jeder Pause |
+| [KI-Protokoll](ablauf/bausteine.md#das-ki-protokoll) 🤖 🚶 | der Nachweis, wofür du KI eingesetzt und was du geprüft hast |
+| [Arbeitsregeln für Claude Code](ablauf/bausteine.md#die-arbeitsregeln-für-claude-code) 🚶 | woran sich der Assistent in deinem Repository hält |
+| [Vorlagen](ablauf/bausteine.md#die-vorlagen) 🚶 | gleicher Aufbau, damit nichts vergessen wird |
+| [Merkliste](ablauf/bausteine.md#die-merkliste) 🚶 🤖 | sammelt, was in den Text soll, bevor du schreibst |
+| [Linkprüfung](ablauf/bausteine.md#die-linkprüfung) 💻 | hält die Verweise zwischen den Dokumenten gültig |
 
 ## Begriffe, kurz erklärt
 
@@ -255,34 +299,48 @@ nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md).
 
 ## Was wo liegt
 
-```
-├── README.md            diese Übersicht
-├── ablauf/              die Anleitungen, von 0 · Einrichten bis 6 · Schreiben
-├── BACKLOG.md           was aus der Bachelorarbeit noch ins Kit kommen könnte
-├── CLAUDE.md            die Arbeitsregeln für Claude Code
-├── ENTSCHEIDUNGEN.md    deine Entscheidungen mit Begründung
-├── STAND.md             wo die Arbeit steht, was offen ist, was als Nächstes kommt
-├── KI-PROTOKOLL.md      wofür du KI eingesetzt hast und was du selbst geprüft hast
-├── literatur.bib        die Literaturangaben, aus den DOIs geholt
-├── literatur/           ein Ordner je Thema, zum Beispiel:
-│   └── schlaf/
-│       ├── schlaf.md                     das Sammeldokument des Themas
-│       ├── Mustermann2020_auswertung.md  eine Auswertung je Studie
-│       ├── pdf/                          die Volltexte, nicht im Repository
-│       └── studienabbruch/               ein Unterordner für ein Teilthema, gleich aufgebaut
-│           ├── studienabbruch.md
-│           └── pdf/
-├── notes/
-│   ├── merkliste.md     was in den Text soll, offene Fragen, Zurückgestelltes
-│   └── recherche/       die Rechercheprotokolle und beschaffung.yaml
-├── data/register.yaml   das Zahlenregister, wahlweise
-├── arbeit/              der Text deiner Arbeit, in LaTeX oder Markdown
-├── vorlagen/            Vorschläge mit Optionen und Beispielen für jede Art von Dokument
-├── tools/               die kleinen Programme und der Wächter
-└── tests/               Tests, die prüfen, ob die Programme richtig arbeiten
-```
+Jeder Eintrag führt zur Datei oder zur passenden Erklärung. Wozu die einzelnen
+Dateien da sind, erklärt [Die Bausteine und wozu sie da sind](ablauf/bausteine.md).
 
-Mehr zum Ordner `literatur/` in [`literatur/README.md`](literatur/README.md).
+<pre>
+├── <a href="#evidence-to-thesis">README.md</a>                             diese Übersicht
+├── <a href="#der-ablauf">ablauf/</a>                               die Anleitungen:
+│   ├── <a href="ablauf/ki-und-plagiat.md">ki-und-plagiat.md</a>                 zuerst lesen: KI, Plagiat, Eidesstattliche Erklärung
+│   ├── <a href="ablauf/0-einrichten.md">0-einrichten.md</a>                   0 · Einrichten
+│   ├── <a href="ablauf/1-recherche.md">1-recherche.md</a>                    1 · Recherche
+│   ├── <a href="ablauf/2-auswertung.md">2-auswertung.md</a>                   2 · Auswertung
+│   ├── <a href="ablauf/3-modell.md">3-modell.md</a>                       3 · Modell, wahlweise
+│   ├── <a href="ablauf/4-sammeldokumente.md">4-sammeldokumente.md</a>              4 · Sammeldokumente
+│   ├── <a href="ablauf/5-entscheidung.md">5-entscheidung.md</a>                 5 · Entscheidung
+│   ├── <a href="ablauf/6-schreiben.md">6-schreiben.md</a>                    6 · Schreiben
+│   ├── <a href="ablauf/bei-jedem-schritt.md">bei-jedem-schritt.md</a>              Git, Wächter, KI-Protokoll
+│   ├── <a href="ablauf/pruefliste-festlegen.md">pruefliste-festlegen.md</a>           worauf du bei jeder Arbeit achtest
+│   └── <a href="ablauf/bausteine.md">bausteine.md</a>                      wozu Register, Hook, Tests und Co. da sind
+├── <a href="BACKLOG.md">BACKLOG.md</a>                            was aus der Bachelorarbeit noch ins Kit kommen könnte
+├── <a href="CLAUDE.md">CLAUDE.md</a>                             die Arbeitsregeln für Claude Code
+├── <a href="ENTSCHEIDUNGEN.md">ENTSCHEIDUNGEN.md</a>                     deine Entscheidungen mit Begründung
+├── <a href="STAND.md">STAND.md</a>                              wo die Arbeit steht, was offen ist, was als Nächstes kommt
+├── <a href="KI-PROTOKOLL.md">KI-PROTOKOLL.md</a>                       wofür du KI eingesetzt und was du selbst geprüft hast
+├── <a href="literatur.bib">literatur.bib</a>                         die Literaturangaben, aus den DOIs geholt
+├── <a href="literatur/README.md">literatur/</a>                            ein Ordner je Thema, zum Beispiel:
+│   └── <a href="ablauf/1-recherche.md#1-ein-thema-anlegen">schlaf/</a>                           ein Thema
+│       ├── <a href="ablauf/4-sammeldokumente.md">schlaf.md</a>                     das Sammeldokument des Themas
+│       ├── <a href="ablauf/2-auswertung.md">Mustermann2020_auswertung.md</a>  eine Auswertung je Studie
+│       ├── <a href="ablauf/1-recherche.md#6-volltexte-holen">pdf/</a>                          die Volltexte, nicht im Repository
+│       └── <a href="literatur/README.md">studienabbruch/</a>               ein Unterordner für ein Teilthema, gleich aufgebaut
+│           ├── <a href="ablauf/4-sammeldokumente.md">studienabbruch.md</a>         sein Sammeldokument
+│           └── <a href="ablauf/1-recherche.md#6-volltexte-holen">pdf/</a>                      seine Volltexte
+├── <a href="notes/">notes/</a>                                Notizen:
+│   ├── <a href="notes/merkliste.md">merkliste.md</a>                      was in den Text soll, offene Fragen, Zurückgestelltes
+│   └── <a href="ablauf/1-recherche.md#2-ein-rechercheprotokoll-anlegen">recherche/</a>                        die Rechercheprotokolle
+│       └── <a href="notes/recherche/beschaffung.yaml">beschaffung.yaml</a>              was nicht zu bekommen ist, mit Grund
+├── <a href="data/">data/</a>                                 Daten:
+│   └── <a href="data/register.yaml">register.yaml</a>                     das Zahlenregister, wahlweise
+├── <a href="arbeit/README.md">arbeit/</a>                               der Text deiner Arbeit, in LaTeX oder Markdown
+├── <a href="#vorlagen-anpassen">vorlagen/</a>                             Vorschläge mit Optionen und Beispielen
+├── <a href="#die-programme">tools/</a>                                die kleinen Programme und der Wächter
+└── <a href="ablauf/bausteine.md#die-tests">tests/</a>                                Tests, die prüfen, ob die Programme richtig arbeiten
+</pre>
 
 ## Die Programme
 

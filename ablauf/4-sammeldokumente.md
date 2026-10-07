@@ -1,5 +1,7 @@
 # 4 · Sammeldokumente
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 **Worum es geht:** je Thema an einer Stelle zusammentragen, was die
 Auswertungen ergeben, was offen ist und was in deine Arbeit kommt.
 
@@ -18,6 +20,9 @@ siehe [1 · Recherche](1-recherche.md).
 Die Vorlage [`vorlagen/sammeldokument.md`](../vorlagen/sammeldokument.md) zeigt zu jedem Teil Optionen und ein
 Beispiel. Fest ist nur der Abschnitt „Was sich abzeichnet“: Dort sucht der
 Wächter die Links auf geprüfte Auswertungen.
+
+💻 Die Tabelle „Stand“ schreibt ein Programm; 🤖 Kurzfassung und Befunde
+entwirft Claude Code; 🚶 du prüfst sie.
 
 ## Was sich bewährt hat
 

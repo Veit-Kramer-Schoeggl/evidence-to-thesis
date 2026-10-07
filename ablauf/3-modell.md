@@ -1,5 +1,7 @@
 # 3 · Modell (wahlweise)
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 **Worum es geht:** Manche Arbeiten rechnen selbst. Sie schätzen zum Beispiel
 Kosten, rechnen ein Ergebnis auf eine andere Gruppe um oder fassen Zahlen
 aus mehreren Studien zusammen. Dieser Schritt beschreibt, wie so eine
@@ -11,6 +13,9 @@ Ergebnisse an markierten Stellen deiner Dokumente und eine Beschreibung der
 Rechenschritte.
 
 ## Die Regeln
+
+🤖 Claude Code baut das Programm, 💻 das Programm rechnet, 🚶 du entscheidest
+die Annahmen und prüfst die Ergebnisse.
 
 1. **Zahlen hinein nur mit Fundstelle.** Jeder Eingabewert kommt aus dem
    Zahlenregister [`data/register.yaml`](../data/register.yaml), also aus

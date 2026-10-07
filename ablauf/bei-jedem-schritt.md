@@ -1,5 +1,7 @@
 # Bei jedem Schritt: Git, Wächter, KI-Protokoll
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 Drei Dinge begleiten jeden Schritt von der Recherche bis zum Text.
 
 ## Git ist Pflicht
@@ -36,7 +38,7 @@ Mit Git hast du das nebenbei:
 - Nach jedem abgeschlossenen Arbeitsschritt ein Commit, mit einer Notiz, was
   sich geändert hat und warum.
 - Am Ende jeder Sitzung ein Push.
-- Claude Code erledigt beides: „Speichere den Stand mit Git und lade ihn hoch.“
+- 🤖 Claude Code erledigt beides: „Speichere den Stand mit Git und lade ihn hoch.“
 
 Wer es selbst machen will:
 
@@ -60,6 +62,9 @@ git log --oneline                            # die letzten Stände ansehen
 
 ## Der Wächter
 
+💻 Läuft von selbst. Wozu es Hook, Wächter und Tests gibt, erklärt
+[Die Bausteine](bausteine.md#der-hook).
+
 Vor jedem Commit startet Git den Wächter, das Programm [`tools/pruefe.py`](../tools/pruefe.py), und
 danach die Tests. Findet er einen Fehler, hält er den Commit auf und sagt,
 was fehlt. Bei Entwürfen im Status „in Arbeit“ gibt er nur Hinweise.
@@ -81,6 +86,8 @@ dann eine bewusste Entscheidung; schreib den Grund in die Commit-Notiz.
 
 ## Das KI-Protokoll
 
+🤖 Claude Code schreibt den Eintrag, 🚶 du ergänzt, was du geprüft hast.
+
 Nach jedem Arbeitsgang mit KI kommt ein Eintrag in [`KI-PROTOKOLL.md`](../KI-PROTOKOLL.md), nach der
 Vorlage [`vorlagen/ki-protokoll-eintrag.md`](../vorlagen/ki-protokoll-eintrag.md). Er hält fest:
 
@@ -94,6 +101,14 @@ du selbst geprüft hast.
 
 Was an KI-Nutzung erlaubt ist und wie du sie offenlegst, regelt der Leitfaden
 deiner Hochschule. Das Protokoll hilft dir, ihn einzuhalten, ersetzt ihn aber
-nicht.
+nicht; siehe [KI, Plagiat und Eidesstattliche Erklärung](ki-und-plagiat.md).
+
+## Nichts blind übernehmen
+
+🚶 Jede Zusammenfassung, jede Auswertung und jeden Entwurf von Claude Code liest
+du ganz und prüfst jede Zahl am Original. KI macht Fehler, die überzeugend
+klingen, und die Verantwortung für deine Arbeit trägst du. Warum das so
+wichtig ist und wie du vorgehst, steht unter
+[Nichts blind übernehmen](ki-und-plagiat.md#3-nichts-blind-übernehmen).
 
 Zurück zur [Übersicht](../README.md)

@@ -1,5 +1,7 @@
 # 1 · Recherche
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 **Worum es geht:** Arbeiten zu deinem Thema finden, festhalten, wie du gesucht
 hast, und die Volltexte auf legalem Weg beschaffen.
 
@@ -14,6 +16,8 @@ Anführungszeichen sind Beispiele, wie du darum bittest. Darunter steht der
 Befehl, den Claude Code dann ausführt; du kannst ihn auch selbst eingeben.
 
 ## 1. Ein Thema anlegen
+
+💻 Ein Programm legt Ordner und Sammeldokument an; 🤖 Claude Code startet es für dich.
 
 Ein Thema ist ein Ordner unter `literatur/`, etwa einer je Teilfrage deiner
 Arbeit. Im Kit heißt so ein Ordner *Kategorie*. Für ein Teilthema legst du
@@ -30,6 +34,8 @@ Jedes Thema bekommt dabei sein Sammeldokument, etwa `literatur/schlaf/schlaf.md`
 
 ## 2. Ein Rechercheprotokoll anlegen
 
+💻 Ein Programm legt das Protokoll an; 🚶 was du gesucht hast, trägst du ein oder sagst es Claude Code.
+
 Ins Protokoll kommt, womit, wann und wie du gesucht hast, die Suchanfrage
 wörtlich. So kann jede Person deine Suche wiederholen.
 
@@ -44,6 +50,8 @@ gehören.
 
 ## 3. Suchen
 
+🚶 Suchen tust du; 🤖 Claude Code hilft, Suchanfragen zu formulieren.
+
 Wo du suchst, hängt vom Fach ab: in Fachdatenbanken wie PubMed, CINAHL oder
 Scopus, in Google Scholar, mit KI-Suchdiensten wie Consensus oder Elicit oder
 in den Literaturverzeichnissen guter Arbeiten.
@@ -54,11 +62,15 @@ in den Literaturverzeichnissen guter Arbeiten.
 
 ## 4. Treffer eintragen
 
+🚶 🤖 Du oder Claude Code.
+
 Je Treffer eine Zeile in der Tabelle „Treffer“ des Protokolls, die DOI ganz
 vorne. Die DOI ist die dauerhafte Kennung eines Artikels. Sie steht meist oben
 auf der Seite des Artikels und beginnt mit `10.`.
 
 ## 5. Literaturangaben holen
+
+💻 Das erledigt ein Programm.
 
 > „Hol die Literaturangaben zu allen DOIs im Protokoll.“
 
@@ -73,6 +85,8 @@ Arbeit bekommt dabei einen Kurznamen, den *Zitierschlüssel*, zum Beispiel
 Auswertung.
 
 ## 6. Volltexte holen
+
+💻 Freie Fassungen holt ein Programm; 🚶 alle anderen holst du über die Bibliothek.
 
 > „Hol die frei verfügbaren Volltexte für das Thema schlaf.“
 
@@ -96,6 +110,8 @@ Die Ordner `pdf/` sind deshalb davon ausgenommen.
 
 ## 7. Den Stand nachziehen
 
+💻 Das erledigt ein Programm.
+
 > „Zieh den Stand nach.“
 
 ```bash
@@ -108,6 +124,8 @@ schreibt es in die Tabelle „Stand“ des Sammeldokuments. Dort steht bei jeder
 Arbeit, deren Volltext noch fehlt, die DOI als Link: anklicken und holen.
 
 ## Woran der Wächter dich erinnert
+
+💻 Bei jedem Commit, von selbst:
 
 - ein Protokoll ohne Zeile **Ablage:**,
 - eine DOI ohne Literaturangabe in [`literatur.bib`](../literatur.bib),

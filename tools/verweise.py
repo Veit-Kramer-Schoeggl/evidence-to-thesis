@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tote Verweise in allen Markdown-Dateien finden.
 
-Geprüft wird jeder relative Link `[Text](pfad)` und jedes Bild `![…](pfad)`,
+Geprüft wird jeder relative Link `[Text](pfad)`, jedes Bild `![…](pfad)` und
+jeder HTML-Link `<a href="pfad">`,
 auch Links ab dem Hauptordner (`/pfad`, so lesen GitHub und VS Code sie):
 Gibt es die Datei, und — bei `pfad#anker` oder `#anker` — gibt es in der
 Zieldatei eine Überschrift oder ein `<a id>` mit diesem Anker? Anker werden
@@ -31,6 +32,7 @@ AUSGENOMMEN = {".git", "node_modules", "__pycache__", "vorlagen"}   # Vorlagen e
 
 LINK = re.compile(r"!?\[(?:[^\[\]]|\[[^\]]*\])*\]\(\s*<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\s*\)")
 ANKER_ID = re.compile(r"<a\s+(?:id|name)=\"([^\"]+)\"")
+HTML_LINK = re.compile(r"<a\s+[^>]*href=\"([^\"]+)\"", re.I)   # etwa im klickbaren Ordnerbaum (<pre>)
 
 
 def ohne_code(text: str) -> str:
@@ -85,8 +87,7 @@ def pruefen(wurzel: Path = REPO) -> list[tuple[str, str]]:
         text = md.read_text(encoding="utf-8")
         wo = str(md.relative_to(wurzel))
         for nr, zeile in enumerate(ohne_code(text).split("\n"), 1):
-            for m in LINK.finditer(zeile):
-                ziel = m.group(1)
+            for ziel in [m.group(1) for m in LINK.finditer(zeile)] + HTML_LINK.findall(zeile):
                 if re.match(r"^[a-z][a-z0-9+.-]*:", ziel, re.I):   # http:, mailto: …
                     continue
                 pfad, _, frag = ziel.partition("#")

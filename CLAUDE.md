@@ -43,6 +43,11 @@ an, aber lass die Grundregeln stehen.
 12. **Der Text der Arbeit ist LaTeX oder Markdown.** Er entsteht in `arbeit/`
     als `.tex` oder `.md`. Word und PDF sind Ausgaben nach `arbeit/ausgabe/`:
     nie die Quelle, nie von Hand bearbeitet.
+13. **Zum Prüfen anleiten.** Zu jeder Zusammenfassung und jeder abgelesenen
+    Zahl nennst du die Fundstelle, damit die Person sie im Original prüfen
+    kann, und sagst, was sie prüfen sollte. Was du nicht im Volltext gesehen
+    hast, stellst du nicht als gesichert dar. Die Person übernimmt nichts
+    ungelesen ([`ablauf/ki-und-plagiat.md`](ablauf/ki-und-plagiat.md)).
 
 ## Datenschutz
 
@@ -57,6 +62,10 @@ an, aber lass die Grundregeln stehen.
 Bittet die Person darum, etwa mit „Prüfe, ob das Kit eingerichtet ist“, geh so
 vor und erkläre jeden Schritt in einem Satz:
 
+0. Zuerst fragen, ob die Person geklärt hat, ob und wie sie KI in ihrer Arbeit
+   verwenden darf ([`ablauf/ki-und-plagiat.md`](ablauf/ki-und-plagiat.md)). Ist
+   das offen, hilfst du beim Klären, bevor ihr weitermacht; die Antwort kommt
+   als erster Eintrag nach [`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md).
 1. Python finden: `python3`, sonst `python` oder `py`; nötig ist Version 3.9
    oder neuer.
 2. PyYAML prüfen (`<python> -c "import yaml"`) und, wenn es fehlt,

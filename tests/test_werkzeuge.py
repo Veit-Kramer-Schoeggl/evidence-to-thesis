@@ -176,6 +176,16 @@ class Verweise(unittest.TestCase):
         self.assertEqual(len(fehler), 1)
         self.assertIn("/FEHLT.md", fehler[0][1])
 
+    def test_html_links_im_ordnerbaum(self):
+        with tempfile.TemporaryDirectory() as d:
+            w = Path(d)
+            (w / "ziel.md").write_text("## Abschnitt\n", encoding="utf-8")
+            (w / "README.md").write_text('<pre>\n├── <a href="ziel.md#abschnitt">ziel.md</a>\n'
+                                         '├── <a href="fehlt.md">fehlt.md</a>\n</pre>\n', encoding="utf-8")
+            fehler = verweise.pruefen(w)
+        self.assertEqual(len(fehler), 1)
+        self.assertIn("fehlt.md", fehler[0][1])
+
     def test_anker_wie_github(self):
         self.assertEqual(verweise.slug("Was sich abzeichnet"), "was-sich-abzeichnet")
 

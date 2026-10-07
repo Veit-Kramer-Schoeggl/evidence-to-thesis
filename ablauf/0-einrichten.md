@@ -1,5 +1,7 @@
 # 0 · Einrichten
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 Einmal am Anfang. Danach hast du:
 
 - ein Konto bei GitHub und eines bei Claude,
@@ -19,7 +21,17 @@ den Befehl ins Terminal ein und drück die Eingabetaste.
 > **Einfügen:** unter Windows mit Rechtsklick oder Strg + V, unter macOS mit
 > Befehlstaste + V, unter Linux mit Strg + Umschalt + V.
 
+## Schritt 0 · Klären, ob du KI verwenden darfst
+
+🚶 Bevor du irgendetwas installierst: Kläre mit den Regeln deiner Hochschule
+und mit deiner Betreuung, ob und wie du KI in deiner Arbeit verwenden darfst,
+und halte die Antwort fest. Wie das geht und worauf es bei Plagiat und
+Eidesstattlicher Erklärung ankommt, steht in
+[KI, Plagiat und Eidesstattliche Erklärung](ki-und-plagiat.md).
+
 ## Schritt 1 · Konten anlegen
+
+🚶 Das machst du selbst, im Browser.
 
 ### GitHub
 
@@ -75,7 +87,7 @@ Zweifel gilt die Preisseite.
 
 ## Schritt 2 · Programme installieren
 
-Wähl dein Betriebssystem. Füge die Befehle **einzeln** ein und warte jeweils,
+🚶 Das machst du selbst; die Befehle kopierst du. Wähl dein Betriebssystem. Füge die Befehle **einzeln** ein und warte jeweils,
 bis das Terminal wieder bereit ist.
 
 <details>
@@ -193,6 +205,8 @@ Meldet einer „nicht gefunden“, hilft meist: Terminal schließen und neu öff
 
 ## Schritt 3 · Mit GitHub verbinden
 
+🚶 Das machst du selbst.
+
 ```bash
 gh auth login --hostname github.com --git-protocol https --web
 ```
@@ -207,6 +221,8 @@ gh auth setup-git
 Damit verwendet auch Git diese Anmeldung.
 
 ## Schritt 4 · Dein eigenes Repository anlegen
+
+🚶 Das machst du selbst.
 
 Ein Repository ist dein Projektordner mit seinem ganzen Verlauf. Deines
 entsteht aus diesem Kit und ist **privat**: Nur du siehst es. Öffentliche
@@ -242,6 +258,8 @@ git config core.hooksPath tools/hooks
 
 ## Schritt 5 · Claude Code starten
 
+🤖 Ab hier hilft dir Claude Code.
+
 Im Ordner deines Repositorys:
 
 ```bash
@@ -264,6 +282,8 @@ fehlt.
 > [Desktop-App](https://code.claude.com/docs/en/desktop-quickstart).
 
 ## Schritt 6 · Volltexte automatisch holen (wahlweise)
+
+🚶 Die E-Mail-Adresse setzt du selbst; 💻 danach holt ein Programm die Volltexte.
 
 [`tools/holpdf.py`](../tools/holpdf.py) fragt beim Dienst Unpaywall nach Volltexten, die legal frei
 verfügbar sind. Unpaywall verlangt dafür eine E-Mail-Adresse. Sie steht nur
@@ -295,6 +315,8 @@ richtige Arbeit steckt. Unter macOS `brew install poppler`, unter Linux
 `sudo apt install poppler-utils`.
 
 ## Schritt 7 · Die Prüfliste festlegen
+
+🤖 🚶 Claude Code schlägt vor, du entscheidest.
 
 Bevor du die erste Arbeit auswertest, legst du fest, worauf du bei jeder Arbeit
 achtest. Wie das geht und welche Prüfpunkte zu welcher Art von Studien passen,

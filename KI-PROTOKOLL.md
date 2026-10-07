@@ -8,6 +8,7 @@ deiner Hochschule und gehen diesem Kit vor.
 KI-Werkzeug oder je Sitzung ein Eintrag nach der Vorlage
 [`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md), fortlaufend nummeriert. Festgehalten wird
 auch, was du selbst am Original geprüft hast. Gibt der Leitfaden deiner
-Hochschule eine Form vor, gilt seine.
+Hochschule eine Form vor, gilt seine. Was erlaubt ist und wie du offenlegst:
+[KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md).
 
 ---

@@ -17,6 +17,9 @@ Gliederung. Wer später fragt „Warum so?“, findet die Antwort hier.
 
 ---
 
-<!-- Erster Eintrag hier, zum Beispiel:
-### E1 Fragestellung und Abgrenzung
+<!-- Der erste Eintrag hält fest, ob und wie du KI verwenden darfst
+(siehe ablauf/ki-und-plagiat.md), zum Beispiel:
+### E1 KI-Nutzung: was erlaubt ist und wie ich sie offenlege
+Danach etwa:
+### E2 Fragestellung und Abgrenzung
 -->

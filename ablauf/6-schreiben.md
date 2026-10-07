@@ -1,9 +1,15 @@
 # 6 · Schreiben
 
+<sub>🚶 machst du selbst · 🤖 erledigt Claude Code für dich · 💻 erledigt ein Programm von selbst</sub>
+
 **Worum es geht:** aus dem Gesammelten den Text machen, und zwar in einem
 Format, das Git versionieren kann.
 
 ## LaTeX oder Markdown, nicht Word
+
+🚶 Den Text schreibst du; 🤖 Claude Code hilft bei Entwürfen und prüft, was du
+geschrieben hast. Jede solche Hilfe legst du offen, siehe
+[KI, Plagiat und Eidesstattliche Erklärung](ki-und-plagiat.md#5-offenlegen).
 
 Bei Textdateien zeigt Git Zeile für Zeile, was sich wann geändert hat. Eine
 Word-Datei ist dagegen gepackt: Git sieht nur, dass sie sich geändert hat,
@@ -29,6 +35,8 @@ Kommentiert deine Betreuung in einer Word-Datei, überträgst du die Änderungen
 in den Text. Claude Code kann dir die Kommentare dafür auflisten.
 
 ### Aus Markdown eine Word-Datei machen
+
+💻 Das erledigt das Programm pandoc.
 
 Dafür gibt es das freie Programm pandoc. Einmal installieren:
 
@@ -56,6 +64,8 @@ gibt es im [Zotero-Stilverzeichnis](https://www.zotero.org/styles); du gibst
 sie mit `--csl=arbeit/apa.csl` an.
 
 ### Aus LaTeX ein PDF machen
+
+💻 Das erledigt deine LaTeX-Installation.
 
 Dafür brauchst du eine LaTeX-Installation, etwa TeX Live (Linux, Windows),
 MiKTeX (Windows) oder MacTeX (macOS). Welche zur Vorlage deiner Hochschule
