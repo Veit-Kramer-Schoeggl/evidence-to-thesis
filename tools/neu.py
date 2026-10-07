@@ -2,6 +2,7 @@
 """Neue Dateien aus den Vorlagen anlegen, mit den richtigen Namen am richtigen Ort.
 
     python3 tools/neu.py kategorie <name>                 # literatur/<name>/<name>.md
+    python3 tools/neu.py kategorie <name>/<teilthema>     # Unterordner, gleich aufgebaut
     python3 tools/neu.py auswertung <kategorie> <Schlüssel>  # literatur/<kategorie>/<Schlüssel>_auswertung.md
     python3 tools/neu.py protokoll <name> [<kategorie>]   # notes/recherche/<JJJJ-MM>-<name>.md
 
@@ -80,28 +81,31 @@ def main() -> int:
     heute = dt.date.today().isoformat()
 
     if a.art == "kategorie":
-        name = a.namen[0]
+        name = a.namen[0].strip("/")
+        kurz = Path(name).name                      # bei Unterordnern der letzte Teil
         text = vorlage("sammeldokument.md", a.knapp)
-        schreiben(REPO / "literatur" / name / f"{name}.md",
-                  text.replace("<Kategorie>", name).replace("<Datum>", heute))
+        schreiben(REPO / "literatur" / name / f"{kurz}.md",
+                  text.replace("<Kategorie>", kurz).replace("<Datum>", heute))
     elif a.art == "auswertung":
         if len(a.namen) != 2:
             sys.exit("Aufruf: python3 tools/neu.py auswertung <kategorie> <Schlüssel>")
         kategorie, schluessel = a.namen
+        kategorie = kategorie.strip("/")
+        kurz = Path(kategorie).name
         eintrag = bib_eintrag(schluessel)
         if eintrag is None:
             sys.exit(f"{schluessel} steht nicht in literatur.bib. Erst: python3 tools/doi2bib.py <DOI>")
         text = vorlage("auswertung.md", a.knapp)
-        text = (text.replace("<Schlüssel>", schluessel).replace("<Datum>", heute).replace("<Kategorie>", kategorie)
+        text = (text.replace("<Schlüssel>", schluessel).replace("<Datum>", heute).replace("<Kategorie>", kurz)
                     .replace("<Titel>", feld(eintrag, "title") or "<Titel>")
                     .replace("<DOI>", feld(eintrag, "doi") or "<DOI>"))
         schreiben(REPO / "literatur" / kategorie / f"{schluessel}_auswertung.md", text)
         status_nachziehen()
-        if not (REPO / "literatur" / kategorie / f"{kategorie}.md").exists():
+        if not (REPO / "literatur" / kategorie / f"{kurz}.md").exists():
             print(f"Hinweis: Sammeldokument fehlt noch:  python3 tools/neu.py kategorie {kategorie}")
     else:
         name = a.namen[0]
-        kategorie = a.namen[1] if len(a.namen) > 1 else name
+        kategorie = (a.namen[1] if len(a.namen) > 1 else name).strip("/")
         text = vorlage("rechercheprotokoll.md", a.knapp)
         schreiben(REPO / "notes" / "recherche" / f"{heute[:7]}-{name}.md",
                   text.replace("<Thema>", name).replace("<Datum>", heute).replace("<Kategorie>", kategorie))

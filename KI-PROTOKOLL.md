@@ -6,7 +6,7 @@ deiner Hochschule und gehen diesem Kit vor.
 
 **Vorschlag, wie es geführt wird:** nach jedem Arbeitsgang mit einem
 KI-Werkzeug oder je Sitzung ein Eintrag nach der Vorlage
-`vorlagen/ki-protokoll-eintrag.md`, fortlaufend nummeriert. Festgehalten wird
+[`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md), fortlaufend nummeriert. Festgehalten wird
 auch, was du selbst am Original geprüft hast. Gibt der Leitfaden deiner
 Hochschule eine Form vor, gilt seine.
 

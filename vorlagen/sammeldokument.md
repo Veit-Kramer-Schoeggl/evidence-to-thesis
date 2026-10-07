@@ -40,14 +40,24 @@ Dokuments. Bei jedem größeren Stand nachziehen und das Datum anpassen.
 
 ## Stand
 
-| Arbeit | Status | Kurz |
-|---|---|---|
+Alle Arbeiten dieser Kategorie und wie weit du mit jeder bist: ✅ ausgewertet,
+📄 Volltext da, `·` Volltext fehlt noch, ⛔ derzeit nicht zu bekommen (Grund in
+[`notes/recherche/beschaffung.yaml`](/notes/recherche/beschaffung.yaml)). Fehlt ein Volltext, steht die DOI dabei:
+anklicken oder kopieren und die Arbeit holen.
 
-> **Optionen:** eine Tabelle wie oben oder eine nach Status gruppierte Liste.
-> Du kannst den Abschnitt auch weglassen, wenn dir die Statuszeichen in den
-> Rechercheprotokollen genügen (`tools/status.py`).
+[`tools/status.py`](/tools/status.py) schreibt die Tabelle zwischen den beiden Kommentarzeilen `stand:start` und
+`stand:ende` selbst, aus
+den Rechercheprotokollen. Bitte dort nichts von Hand ändern.
+
+<!-- stand:start -->
+<!-- stand:ende -->
+
+> **Optionen:** Brauchst du die Tabelle nicht, lösch die beiden Kommentarzeilen. Dann
+> schreibt [`tools/status.py`](/tools/status.py) hier nichts mehr, und du kannst den Abschnitt
+> frei gestalten oder streichen.
 >
-> **Beispiel:** `| [Mustermann 2020](Mustermann2020_auswertung.md) | geprüft | größte Kohorte, nur Selbstauskunft |`
+> **Beispiel:** So sieht die Zeile einer Arbeit aus, deren Volltext noch fehlt:
+> `| · | Mustermann2021 | Ein Titel | [10.xxxx/beispiel](https://doi.org/10.xxxx/beispiel) |`
 
 ## Was sich abzeichnet
 
@@ -80,7 +90,7 @@ verschwindet still.
 
 **Optionen.** Welche Wege es gibt, mit Vor- und Nachteilen.
 
-**Entscheidung.** Wer hat wann was entschieden (Eintrag in `ENTSCHEIDUNGEN.md`)?
+**Entscheidung.** Wer hat wann was entschieden (Eintrag in [`ENTSCHEIDUNGEN.md`](/ENTSCHEIDUNGEN.md))?
 
 > **Beispiel:** „F1 — Zählt der Schlaf am Wochenende mit? Befund: Die Studien
 > mitteln über die ganze Woche (S. N), getrennte Werte gibt es nicht. Status:

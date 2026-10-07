@@ -7,7 +7,7 @@ wird aus literatur.bib gelesen, damit PDF, Bibliografieeintrag und
 Auswertung denselben Namen tragen.
 
     python3 tools/holpdf.py --kategorie <kategorie> --file notes/recherche/<protokoll>.md
-    python3 tools/holpdf.py --kategorie <kategorie> 10.1186/s12966-014-0132-x
+    python3 tools/holpdf.py --kategorie <kategorie> 10.1000/182
     python3 tools/holpdf.py --kategorie <kategorie> --file ... --dry-run
 
 Was hinter einer Bezahlschranke liegt, wird NICHT beschafft, sondern am Ende

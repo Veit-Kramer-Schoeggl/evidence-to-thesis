@@ -11,14 +11,15 @@
 
 > **So ist diese Vorlage gemeint.** Sie ist ein Vorschlag: Übernimm, was dir
 > hilft, und streich den Rest. Die Blöcke **Optionen** und **Beispiel** helfen
-> beim Ausfüllen und kommen danach weg; `tools/neu.py` mit `--knapp` legt die
+> beim Ausfüllen und kommen danach weg; [`tools/neu.py`](/tools/neu.py) mit `--knapp` legt die
 > Datei gleich ohne sie an. Die Beispiele sind erfunden und zeigen nur die
 > Form. Zahlen darin sind Platzhalter (`<n>`, `0,XX`, `S. N`).
 >
 > Fest ist nur, was der Wächter liest:
 > - die Kopfzeile mit Zweck und Status;
 > - die Zeile **Register:**;
-> - die Prüfliste zwischen ihren Marken;
+> - die Prüfliste zwischen den Kommentarzeilen `pruefliste:start` und
+>   `pruefliste:ende`, die in der Vorschau unsichtbar sind;
 > - die Pflichtabschnitte im Kommentar darunter.
 >
 > Prüfliste und Pflichtabschnitte nimmt er aus `vorlagen/auswertung.md`.
@@ -32,7 +33,8 @@
 > - **Status:** „in Arbeit“, solange du liest. Der Wächter nennt dann nur
 >   Hinweise. „geprüft“, sobald die Prüfliste abgehakt und die Auswertung im
 >   Sammeldokument verlinkt ist. Ab dann verlangt er alles.
-> - **Register:** „keine“, oder die IDs aus `data/register.yaml` in Backticks,
+> - **Register:** „keine“, oder die Kennungen aus [`data/register.yaml`](/data/register.yaml), jede in
+>   schrägen Hochkommas wie `` `Mustermann2020-a` ``,
 >   sobald Zahlen dieser Arbeit in eine Rechnung oder in den Text wandern.
 >
 > **Beispiel:** Zweck „Kapitel 2, Hintergrund“, Status „in Arbeit“,

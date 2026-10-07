@@ -5,7 +5,7 @@ Gliederung. Wer später fragt „Warum so?“, findet die Antwort hier.
 
 **Vorschlag, wie es geführt wird:**
 
-- Ein Eintrag je Entscheidung nach der Vorlage `vorlagen/entscheidung.md`:
+- Ein Eintrag je Entscheidung nach der Vorlage [`vorlagen/entscheidung.md`](vorlagen/entscheidung.md):
   die Langform für Weichenstellungen, die Kurzform für kleine Entscheidungen.
 - Fortlaufend nummeriert (E1, E2, …), bei vielen Einträgen nach Bereichen
   (E1.1, E2.1, …).

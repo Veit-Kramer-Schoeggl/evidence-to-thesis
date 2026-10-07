@@ -9,5 +9,20 @@
 
 set -e
 wurzel="$(git rev-parse --show-toplevel)"
-python3 "$wurzel/tools/pruefe.py" --leise
-cd "$wurzel" && python3 -m unittest discover -s tests -t . -q
+
+# Python finden: python3 auf macOS und Linux, unter Windows auch python oder py.
+PY=""
+for kandidat in python3 python py; do
+    if command -v "$kandidat" >/dev/null 2>&1 \
+        && "$kandidat" -c "import sys; sys.exit(sys.version_info < (3, 9))" >/dev/null 2>&1; then
+        PY="$kandidat"
+        break
+    fi
+done
+if [ -z "$PY" ]; then
+    echo "Kein Python ab Version 3.9 gefunden. Anleitung: ablauf/0-einrichten.md" >&2
+    exit 1
+fi
+
+"$PY" "$wurzel/tools/pruefe.py" --leise
+cd "$wurzel" && "$PY" -m unittest discover -s tests -t . -q

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tote Verweise in allen Markdown-Dateien finden.
 
-Geprüft wird jeder relative Link `[Text](pfad)` und jedes Bild `![…](pfad)`:
+Geprüft wird jeder relative Link `[Text](pfad)` und jedes Bild `![…](pfad)`,
+auch Links ab dem Hauptordner (`/pfad`, so lesen GitHub und VS Code sie):
 Gibt es die Datei, und — bei `pfad#anker` oder `#anker` — gibt es in der
 Zieldatei eine Überschrift oder ein `<a id>` mit diesem Anker? Anker werden
 gebildet wie auf GitHub (Kleinschreibung, Satzzeichen weg, Leerzeichen zu
@@ -90,7 +91,10 @@ def pruefen(wurzel: Path = REPO) -> list[tuple[str, str]]:
                     continue
                 pfad, _, frag = ziel.partition("#")
                 pfad = urllib.parse.unquote(pfad)
-                datei = (md.parent / pfad).resolve() if pfad else md
+                if pfad.startswith("/"):                  # ab dem Hauptordner, wie auf GitHub
+                    datei = (wurzel / pfad.lstrip("/")).resolve()
+                else:
+                    datei = (md.parent / pfad).resolve() if pfad else md
                 try:
                     datei.relative_to(wurzel.resolve())
                 except ValueError:

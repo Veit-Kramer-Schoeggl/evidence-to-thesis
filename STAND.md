@@ -23,7 +23,7 @@ Sammeldokument.
 ## 3. Offene Entscheidungen
 
 Was entschieden werden muss, mit den Optionen und einer Empfehlung. Ist es
-entschieden: durchstreichen, Datum dazu, Eintrag in `ENTSCHEIDUNGEN.md`.
+entschieden: durchstreichen, Datum dazu, Eintrag in [`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md).
 
 1. …
 

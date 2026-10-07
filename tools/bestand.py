@@ -39,7 +39,7 @@ BESCHAFFUNG = RECHERCHE / "beschaffung.yaml"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from status import (AUSGEWERTET, FEHLT, NICHT_BESCHAFFBAR, PDF_DA, VOLLTEXT_ENDUNGEN,  # noqa: E402
-                    ausgewertete, kennung_aus_zeile, kennung_zu_schluessel,
+                    ablage_ordner, ausgewertete, bib_titel, kennung_aus_zeile, kennung_zu_schluessel,
                     nicht_beschaffbar, symbol, vorhandene_volltexte)
 
 
@@ -84,8 +84,7 @@ def rel(p: Path) -> str:
 
 def ablage(protokoll: Path, text: str) -> Path | None:
     """Der Ablageordner steht im Kopf: **Ablage:** `literatur/...`"""
-    m = re.search(r"^\*\*Ablage:\*\*.*?(literatur/[^`)\]\s]+)", text, re.MULTILINE)
-    return (REPO / m.group(1).rstrip("/")) if m else None
+    return ablage_ordner(text)
 
 
 def zeilen_lesen(protokoll: Path, keys: dict[str, str]) -> list[Zeile]:
@@ -104,20 +103,6 @@ def zeilen_lesen(protokoll: Path, keys: dict[str, str]) -> list[Zeile]:
 # ── Inhalt gegen Titel ──
 # Anlass aus der Praxis: Unter einem richtig benannten PDF lag mehrmals eine andere
 # Arbeit — der Dateiname stimmte, der Inhalt nicht.
-
-def bib_titel() -> dict[str, str]:
-    """Zitierschlüssel → Titel aus literatur.bib."""
-    bib = REPO / "literatur.bib"
-    if not bib.exists():
-        return {}
-    out = {}
-    for eintrag in re.split(r"(?=@\w+\s*\{)", bib.read_text(encoding="utf-8")):
-        k = re.match(r"@\w+\s*\{\s*([^,\s]+)", eintrag)
-        t = re.search(r"\btitle\s*=\s*\{(.+?)\}\s*,\s*\w+\s*=", eintrag, re.S)
-        if k and t:
-            out[k.group(1)] = t.group(1)
-    return out
-
 
 def woerter(text: str) -> list[str]:
     """Kleinbuchstaben ohne Akzente, Silbentrennung am Zeilenende aufgehoben."""

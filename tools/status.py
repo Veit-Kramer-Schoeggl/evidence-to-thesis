@@ -8,6 +8,11 @@ Setzt hinter jede DOI in notes/recherche/*.md ein Statuszeichen:
     📄  Volltext liegt unter literatur/<kategorie>/pdf/<Schlüssel>.pdf (oder .xml)
     ✅  ausgewertet, es gibt literatur/<kategorie>/<Schlüssel>_auswertung.md
 
+Dazu schreibt es in jedes Sammeldokument literatur/<kategorie>/<kategorie>.md, das die
+Marken <!-- stand:start --> und <!-- stand:ende --> trägt, die Tabelle „Stand“: jede
+Arbeit aus den Protokollen, deren Ablage diese Kategorie ist, mit Zeichen, Titel und
+DOI. Fehlt der Volltext noch, lässt sich die Arbeit über die DOI gleich holen.
+
     python3 tools/status.py            # Status aktualisieren
     python3 tools/status.py --check    # nur berichten, nichts schreiben
 
@@ -23,6 +28,7 @@ tools/bestand.py zählen sie wie eine DOI (kennung_aus_zeile).
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -107,6 +113,25 @@ def kennung_zu_schluessel() -> dict[str, str]:
     return out
 
 
+def bib_titel() -> dict[str, str]:
+    """Zitierschlüssel → Titel aus literatur.bib."""
+    if not BIB.exists():
+        return {}
+    out = {}
+    for eintrag in re.split(r"(?=@\w+\s*\{)", BIB.read_text(encoding="utf-8")):
+        k = re.match(r"@\w+\s*\{\s*([^,\s]+)", eintrag)
+        t = re.search(r"\btitle\s*=\s*\{(.+?)\}\s*,\s*\w+\s*=", eintrag, re.S)
+        if k and t:
+            out[k.group(1)] = t.group(1)
+    return out
+
+
+def ablage_ordner(text: str) -> Path | None:
+    """Der Ablageordner aus dem Kopf eines Protokolls: **Ablage:** `literatur/...`"""
+    m = re.search(r"^\*\*Ablage:\*\*.*?(literatur/[^`)\]\s]+)", text, re.MULTILINE)
+    return (REPO / m.group(1).rstrip("/")) if m else None
+
+
 def vorhandene_volltexte() -> dict[str, Path]:
     """Schlüssel → Datei. Volltexte liegen in pdf/-Unterordnern; .xml zählt mit
     (JATS-Volltext, z. B. Salway2023)."""
@@ -160,6 +185,62 @@ def zeile_setzen(line: str, doi: str, zeichen: str) -> str:
     return muster.sub(f"{doi} {zeichen}", line, count=1)
 
 
+# ── Die Tabelle „Stand“ im Sammeldokument ──
+STAND_START, STAND_ENDE = "<!-- stand:start -->", "<!-- stand:ende -->"
+STAND_REIHENFOLGE = {AUSGEWERTET: 0, PDF_DA: 1, FEHLT: 2, NICHT_BESCHAFFBAR: 3}
+
+
+def kennung_als_link(kennung: str) -> str:
+    """DOI oder Kennung so, dass man sie anklicken oder kopieren kann."""
+    if kennung.startswith("10."):
+        return f"[{kennung}](https://doi.org/{kennung.replace('(', '%28').replace(')', '%29')})"
+    art, _, wert = kennung.partition(":")
+    if art == "hdl":
+        return f"[{kennung}](https://hdl.handle.net/{wert})"
+    if art == "url":
+        return f"<https://{wert}>"
+    return kennung
+
+
+def stand_tabellen(keys, pdfs, fertig, gesperrt) -> dict[Path, str]:
+    """Sammeldokument → Tabelle aller Arbeiten seiner Kategorie, aus den Protokollen mit Ablage."""
+    titel = bib_titel()
+    je_ordner: dict[Path, dict[str, tuple[str | None, str]]] = {}
+    for pfad in sorted(RECHERCHE.glob("*.md")):
+        text = pfad.read_text(encoding="utf-8")
+        ordner = ablage_ordner(text)
+        if ordner is None:
+            continue
+        for line in text.splitlines():
+            kennung = kennung_aus_zeile(line)
+            if kennung:
+                key = keys.get(kennung.lower())
+                je_ordner.setdefault(ordner, {}).setdefault(key or kennung.lower(), (key, kennung))
+    out = {}
+    for ordner, eintraege in je_ordner.items():
+        zeilen = []
+        for key, kennung in eintraege.values():
+            z = symbol(key, pdfs, fertig, gesperrt)
+            if key and key in fertig:
+                arbeit = f"[{key}]({Path(os.path.relpath(fertig[key], ordner)).as_posix()})"
+            else:
+                arbeit = key or "noch nicht in literatur.bib"
+            name = " ".join((titel.get(key or "", "")).split()).replace("|", "\\|")
+            zeilen.append((STAND_REIHENFOLGE[z], (key or kennung).lower(),
+                           f"| {z} | {arbeit} | {name} | {kennung_als_link(kennung)} |"))
+        out[ordner / f"{ordner.name}.md"] = "\n".join(
+            ["| | Arbeit | Titel | DOI |", "|---|---|---|---|"] + [z for *_, z in sorted(zeilen)])
+    return out
+
+
+def stand_setzen(text: str, tabelle: str) -> str:
+    """Die Tabelle zwischen die Marken setzen; ohne Marken bleibt der Text, wie er ist."""
+    a, e = text.find(STAND_START), text.find(STAND_ENDE)
+    if a < 0 or e < a:
+        return text
+    return text[: a + len(STAND_START)] + "\n" + tabelle + "\n" + text[e:]
+
+
 def datei_aktualisieren(pfad: Path, keys: dict[str, str], pdfs, fertig, gesperrt,
                         schreiben: bool) -> list[tuple[str, str]]:
     zeilen = pfad.read_text(encoding="utf-8").splitlines()
@@ -195,6 +276,16 @@ def main() -> int:
         for key, z in bericht:
             print(f"  {z}  {key}")
             gesamt[z] += 1
+
+    for sammel, tabelle in stand_tabellen(keys, pdfs, fertig, gesperrt).items():
+        if not sammel.exists():
+            continue
+        alt = sammel.read_text(encoding="utf-8")
+        neu = stand_setzen(alt, tabelle)
+        if neu != alt:
+            print(f"\n{sammel.relative_to(REPO)}: Tabelle „Stand“ {'veraltet' if args.check else 'nachgezogen'}")
+            if not args.check:
+                sammel.write_text(neu, encoding="utf-8")
 
     print(f"\n{AUSGEWERTET} ausgewertet: {gesamt[AUSGEWERTET]}   "
           f"{PDF_DA} Volltext da: {gesamt[PDF_DA]}   {FEHLT} steht aus: {gesamt[FEHLT]}   "

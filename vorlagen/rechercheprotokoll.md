@@ -37,14 +37,14 @@
 
 Eine Kennung je Zeile, am Zeilenanfang der Tabelle. `tools/doi2bib.py --file`
 holt die Bibliografie, `tools/holpdf.py --file` die frei verfügbaren
-Volltexte. `tools/status.py` setzt hinter jede Kennung den Stand:
+Volltexte. [`tools/status.py`](/tools/status.py) setzt hinter jede Kennung den Stand:
 
 | Zeichen | Stand |
 |---|---|
 | `·` | steht aus |
 | `📄` | Volltext da |
 | `✅` | ausgewertet |
-| `⛔` | nicht beschaffbar, Grund in `beschaffung.yaml` |
+| `⛔` | nicht beschaffbar, Grund in [`beschaffung.yaml`](/notes/recherche/beschaffung.yaml) |
 
 | DOI | Studie | Warum sie zählt |
 |---|---|---|

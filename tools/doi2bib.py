@@ -7,7 +7,7 @@ einheitlichen Zitierschlüssel (NachnameJahr) und hängt neue Einträge an
 die gemeinsame Bibliografie an. Vorhandene Schlüssel und DOIs werden
 übersprungen, nichts wird überschrieben.
 
-    python3 tools/doi2bib.py 10.1186/s12966-014-0132-x 10.1093/ije/dyq104
+    python3 tools/doi2bib.py 10.1000/182 10.1000/183
     python3 tools/doi2bib.py --file dois.txt
     python3 tools/doi2bib.py --file dois.txt --dry-run
 

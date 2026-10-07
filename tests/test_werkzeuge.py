@@ -1,6 +1,8 @@
 """Tests der Werkzeuge: Vorlagen und Wächter passen zusammen, angelegte Dateien, Linkprüfung, DOI-Erkennung,
 Zitierschlüssel."""
 
+from __future__ import annotations
+
 import contextlib
 import importlib
 import io
@@ -164,6 +166,16 @@ class Verweise(unittest.TestCase):
         self.assertEqual(len(fehler), 1)
         self.assertIn("fehlt.md", fehler[0][1])
 
+    def test_links_ab_dem_hauptordner(self):
+        with tempfile.TemporaryDirectory() as d:
+            w = Path(d)
+            (w / "ENTSCHEIDUNGEN.md").write_text("# E\n", encoding="utf-8")
+            (w / "tief" / "tiefer").mkdir(parents=True)
+            (w / "tief" / "tiefer" / "a.md").write_text("[gut](/ENTSCHEIDUNGEN.md) [tot](/FEHLT.md)\n", encoding="utf-8")
+            fehler = verweise.pruefen(w)
+        self.assertEqual(len(fehler), 1)
+        self.assertIn("/FEHLT.md", fehler[0][1])
+
     def test_anker_wie_github(self):
         self.assertEqual(verweise.slug("Was sich abzeichnet"), "was-sich-abzeichnet")
 
@@ -192,6 +204,20 @@ def neu_aufrufen(wurzel: Path, *argumente: str) -> None:
         neu.REPO, neu.BIB = alt
 
 
+ROOT_LINK = re.compile(r"\]\((/[^)#\s]+)")
+
+
+def stellvertreter_fuer_hauptordner(wurzel: Path) -> None:
+    """Vorlagen verlinken Dateien ab dem Hauptordner (/CLAUDE.md …). Im Wegwerf-Ordner
+    stehen dafür leere Stellvertreter, aber nur für Ziele, die es im Kit wirklich gibt."""
+    for md in list(wurzel.glob("**/*.md")):
+        for ziel in ROOT_LINK.findall(md.read_text(encoding="utf-8")):
+            echt, platz = REPO / ziel.lstrip("/"), wurzel / ziel.lstrip("/")
+            if echt.exists() and not platz.exists():
+                platz.parent.mkdir(parents=True, exist_ok=True)
+                platz.write_text("", encoding="utf-8")
+
+
 class Neu(unittest.TestCase):
     @staticmethod
     def anlegen(wurzel: Path, *knapp: str) -> list[Path]:
@@ -201,7 +227,8 @@ class Neu(unittest.TestCase):
         neu_aufrufen(wurzel, *knapp, "kategorie", "thema")
         neu_aufrufen(wurzel, *knapp, "protokoll", "suche", "thema")
         neu_aufrufen(wurzel, *knapp, "auswertung", "thema", "Muster2020")
-        return sorted(wurzel.glob("**/*.md"))
+        stellvertreter_fuer_hauptordner(wurzel)
+        return sorted(p for p in wurzel.glob("**/*.md") if p.stat().st_size)
 
     def test_auswertung_aus_vorlage_anlegen(self):
         with tempfile.TemporaryDirectory() as d:
@@ -227,6 +254,29 @@ class Neu(unittest.TestCase):
                 pruefe.pruefe_auswertung(w / "literatur" / "thema" / "Muster2020_auswertung.md", {}, b)
                 self.assertEqual(b.fehler, [])
 
+    def test_unterordner_fuer_ein_teilthema(self):
+        with tempfile.TemporaryDirectory() as d:
+            w = Path(d)
+            self.anlegen(w)
+            neu_aufrufen(w, "kategorie", "thema/teil")
+            neu_aufrufen(w, "protokoll", "teilsuche", "thema/teil")
+            with (w / "literatur.bib").open("a", encoding="utf-8") as f:
+                f.write("@article{Muster2021, title={Zweiter Titel}, doi={10.1000/y}, year={2021}}\n")
+            neu_aufrufen(w, "auswertung", "thema/teil", "Muster2021")
+            stellvertreter_fuer_hauptordner(w)
+            sammel = (w / "literatur" / "thema" / "teil" / "teil.md").read_text(encoding="utf-8")
+            auswertung = (w / "literatur" / "thema" / "teil" / "Muster2021_auswertung.md").read_text(encoding="utf-8")
+            protokoll = next((w / "notes" / "recherche").glob("*-teilsuche.md")).read_text(encoding="utf-8")
+            self.assertEqual(verweise.pruefen(w), [])
+        self.assertTrue(sammel.startswith("# teil — Gesamtschau"))
+        self.assertIn("[teil](teil.md)", auswertung)
+        self.assertIn("literatur/thema/teil/", protokoll)
+
+    def test_links_der_vorlagen_zeigen_auf_bestehende_dateien(self):
+        for vorlage in sorted((REPO / "vorlagen").glob("*.md")):
+            for ziel in ROOT_LINK.findall(vorlage.read_text(encoding="utf-8")):
+                self.assertTrue((REPO / ziel.lstrip("/")).exists(), f"{vorlage.name}: {ziel}")
+
     def test_knapp_laesst_nur_die_hilfe_weg(self):
         knapp = neu.ohne_hilfe(VORLAGE_AUSWERTUNG)
         for hilfe in ("> **So ist", "> **Optionen", "> **Beispiel"):
@@ -235,6 +285,41 @@ class Neu(unittest.TestCase):
                        *(f"## {a}" for a in pruefe.PFLICHTABSCHNITTE)):
             self.assertIn(bleibt, knapp)
         self.assertEqual(neu.ohne_hilfe("Text\n\n> **Beispiel:** x\n> y\n\nWeiter\n"), "Text\n\nWeiter\n")
+
+
+class StandTabelle(unittest.TestCase):
+    """status.py schreibt „Stand“ ins Sammeldokument, mit DOI bei jeder Arbeit, deren Volltext fehlt."""
+
+    def test_tabelle_im_sammeldokument(self):
+        with tempfile.TemporaryDirectory() as d:
+            w = Path(d)
+            Neu.anlegen(w)                      # Kategorie thema, Protokoll mit Ablage thema, Auswertung Muster2020
+            with (w / "literatur.bib").open("a", encoding="utf-8") as f:
+                f.write("@article{Muster2021, title={Zweiter | Titel}, doi={10.1016/s2542-5196(20)30079-6}, year={2021}}\n")
+            protokoll = next((w / "notes" / "recherche").glob("*.md"))
+            kopf = "| DOI | Studie | Warum sie zählt |\n|---|---|---|\n"
+            text = protokoll.read_text(encoding="utf-8")
+            self.assertIn(kopf, text)
+            text = text.replace(kopf, kopf + "| 10.1000/x | Muster 2020 | a |\n"
+                                "| 10.1016/s2542-5196(20)30079-6 | Muster 2021 | b |\n"
+                                "| 10.1000/neu | noch ohne Eintrag | c |\n", 1)
+            protokoll.write_text(text, encoding="utf-8")
+            pfade = dict(REPO=w, BIB=w / "literatur.bib", LITERATUR=w / "literatur",
+                         RECHERCHE=w / "notes" / "recherche", BESCHAFFUNG=w / "notes" / "recherche" / "beschaffung.yaml")
+            with mock.patch.multiple(status, **pfade):
+                tabellen = status.stand_tabellen(status.kennung_zu_schluessel(), status.vorhandene_volltexte(),
+                                                 status.ausgewertete(), {})
+                sammel = w / "literatur" / "thema" / "thema.md"
+                neu_text = status.stand_setzen(sammel.read_text(encoding="utf-8"), tabellen[sammel])
+        zeilen = neu_text.split(status.STAND_START)[1].split(status.STAND_ENDE)[0].strip().splitlines()
+        self.assertEqual(zeilen[2], "| ✅ | [Muster2020](Muster2020_auswertung.md) | Ein Titel | "
+                                    "[10.1000/x](https://doi.org/10.1000/x) |")
+        self.assertIn("| · | Muster2021 | Zweiter \\| Titel | [10.1016/s2542-5196(20)30079-6]"
+                      "(https://doi.org/10.1016/s2542-5196%2820%2930079-6) |", zeilen)
+        self.assertIn("| · | noch nicht in literatur.bib |  | [10.1000/neu](https://doi.org/10.1000/neu) |", zeilen)
+
+    def test_ohne_marken_bleibt_alles(self):
+        self.assertEqual(status.stand_setzen("# Text ohne Marken\n", "| x |"), "# Text ohne Marken\n")
 
 
 if __name__ == "__main__":

@@ -1,21 +1,31 @@
 # Literatur
 
-Ein Unterordner je Kategorie, also je Teilfrage der Arbeit:
+Ein Ordner je Thema, also etwa je Teilfrage deiner Arbeit. Für ein Teilthema
+legst du darin einen Unterordner an; er ist genauso aufgebaut. Ein Beispiel:
 
 ```
 literatur/
-└── <kategorie>/
-    ├── <kategorie>.md               Sammeldokument: Kurzfassung, Stand, Was sich abzeichnet, Fragen
-    ├── <Schlüssel>_auswertung.md     eine Auswertung je gelesener Arbeit, mit Prüfliste
-    └── pdf/                          Volltexte, nicht versioniert (.gitignore)
+└── schlaf/
+    ├── schlaf.md                      Sammeldokument: Kurzfassung, Stand, Was sich abzeichnet, Fragen
+    ├── Mustermann2020_auswertung.md   eine Auswertung je gelesener Arbeit, mit Prüfliste
+    ├── pdf/                           die Volltexte, nicht im Repository
+    │   └── Mustermann2020.pdf
+    └── studienabbruch/                ein Unterordner für ein Teilthema
+        ├── studienabbruch.md          sein Sammeldokument
+        ├── Musterfrau2022_auswertung.md
+        └── pdf/
 ```
 
-Anlegen mit:
+Anlegen lässt du das am einfachsten von Claude Code („Lege ein Thema schlaf
+an“), oder du gibst die Befehle selbst ein:
 
 ```bash
-python3 tools/neu.py kategorie <kategorie>
-python3 tools/neu.py auswertung <kategorie> <Schlüssel>
+python3 tools/neu.py kategorie schlaf
+python3 tools/neu.py kategorie schlaf/studienabbruch
+python3 tools/neu.py auswertung schlaf Mustermann2020
 ```
 
-Der Zitierschlüssel kommt aus `literatur.bib` (`tools/doi2bib.py`); Volltext,
-Auswertung und Bibliografie tragen denselben Namen.
+Volltext, Auswertung und Literaturangabe tragen denselben Namen, den
+Zitierschlüssel aus [`literatur.bib`](../literatur.bib). Mehr dazu in
+[1 · Recherche](../ablauf/1-recherche.md), [2 · Auswertung](../ablauf/2-auswertung.md)
+und [3 · Sammeldokument](../ablauf/3-sammeldokument.md).

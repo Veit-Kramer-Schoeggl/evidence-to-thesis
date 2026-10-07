@@ -1,6 +1,9 @@
 # Volltexte: nie versionieren (Urheberrecht)
 literatur/**/pdf/
 
+# Ausgaben der Arbeit (Word, PDF): entstehen aus dem Text in arbeit/, nicht versionieren
+arbeit/ausgabe/
+
 # Exporte aus Suchdiensten mit eingeschränkter Lizenz
 notes/recherche/exporte/
 
