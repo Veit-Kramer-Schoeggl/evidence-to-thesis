@@ -7,7 +7,8 @@ KI-Assistenten.
 
 Entstanden bei einer Seminar- und einer Bachelorarbeit im Studiengang eHealth
 der FH JOANNEUM. **Inoffiziell:** Das Kit ist keine Vorlage der Hochschule und
-ersetzt deren Leitfäden nicht; bei Widersprüchen gilt der Leitfaden.
+ersetzt deren Leitfäden nicht; bei Widersprüchen gilt der Leitfaden. Werkzeuge
+und Texte sind mit Unterstützung eines KI-Assistenten (Claude Code) entstanden.
 
 ## Drei Grundsätze
 
