@@ -1,4 +1,4 @@
-# 4 · Entscheidung
+# 5 · Entscheidung
 
 **Worum es geht:** An den Weichen deiner Arbeit entscheidest du bewusst und
 hältst fest, warum. Weichen sind etwa die Fragestellung, die Methode, welche
@@ -29,4 +29,4 @@ nachvollziehbar, was wann galt und warum es sich geändert hat.
 Oft führt eine Entscheidung zurück: Eine neue Frage braucht eine neue Suche,
 also wieder [1 · Recherche](1-recherche.md).
 
-Weiter: [5 · Schreiben](5-schreiben.md) · zurück zur [Übersicht](../README.md)
+Weiter: [6 · Schreiben](6-schreiben.md) · zurück zur [Übersicht](../README.md)

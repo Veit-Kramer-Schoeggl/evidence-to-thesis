@@ -8,7 +8,7 @@ zeigen, was sich geändert hat. Warum das zählt, steht in
 **Word und PDF sind nur Ausgaben.** Du erzeugst sie aus dem Text in den Ordner
 `arbeit/ausgabe/`. Dieser Ordner ist vom Repository ausgenommen; du
 bearbeitest nur den Text. Wie das geht, steht in
-[5 · Schreiben](../ablauf/5-schreiben.md).
+[6 · Schreiben](../ablauf/6-schreiben.md).
 
 **Vorlagen der Hochschule sind nicht enthalten.** Hol sie dir über die
 offiziellen Kanäle deines Studiengangs und leg sie hier ab. Ob sie in ein

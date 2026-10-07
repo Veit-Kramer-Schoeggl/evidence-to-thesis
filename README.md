@@ -33,14 +33,16 @@ eingehalten ist, soweit sich das automatisch prüfen lässt.
 flowchart TB
     subgraph PH["Ablauf · jeder Kasten führt zur Anleitung"]
         direction LR
-        P0["<b>0 · Einrichten</b><br/>einmalig: Konten,<br/>Claude Code, Repository,<br/>Prüfliste festlegen<br/><b>◆ hier anfangen</b>"]
+        P0["<b>0 · Einrichten</b><br/>einmalig: Konten,<br/>Claude Code, Repository,<br/>Prüfliste festlegen"]
         P1["<b>1 · Recherche</b><br/>suchen, Treffer notieren,<br/>Volltexte holen"]
         P2["<b>2 · Auswertung</b><br/>jede Arbeit lesen,<br/>Prüfliste durchgehen"]
-        P3["<b>3 · Sammeldokument</b><br/>Ergebnisse je Thema,<br/>offene Fragen"]
-        P4["<b>4 · Entscheidung</b><br/>Optionen abwägen,<br/>du entscheidest"]
-        P5["<b>5 · Schreiben</b><br/>Text in LaTeX<br/>oder Markdown"]
-        P0 --> P1 --> P2 --> P3 --> P4 --> P5
-        P4 -. "neue Frage" .-> P1
+        P3["<b>3 · Modell</b><br/>eigene Rechnung,<br/>Kernzahlen, Abbildungen<br/>(wahlweise)"]
+        P4["<b>4 · Sammeldokumente</b><br/>Ergebnisse je Thema,<br/>offene Fragen"]
+        P5["<b>5 · Entscheidung</b><br/>Optionen abwägen,<br/>du entscheidest"]
+        P6["<b>6 · Schreiben</b><br/>Text in LaTeX<br/>oder Markdown"]
+        P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6
+        P5 -. "neue Frage" .-> P1
+        P5 -. "Änderung am Modell" .-> P3
     end
     subgraph QS["Bei jedem Schritt"]
         direction LR
@@ -53,19 +55,18 @@ flowchart TB
     click P0 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/0-einrichten.md" _blank
     click P1 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/1-recherche.md" _blank
     click P2 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/2-auswertung.md" _blank
-    click P3 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/3-sammeldokument.md" _blank
-    click P4 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/4-entscheidung.md" _blank
-    click P5 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/5-schreiben.md" _blank
+    click P3 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/3-modell.md" _blank
+    click P4 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/4-sammeldokumente.md" _blank
+    click P5 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/5-entscheidung.md" _blank
+    click P6 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/6-schreiben.md" _blank
     click Q1 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/bei-jedem-schritt.md" _blank
     click Q2 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/bei-jedem-schritt.md" _blank
     click Q3 "https://github.com/Veit-Kramer-Schoeggl/evidence-to-thesis/blob/main/ablauf/bei-jedem-schritt.md" _blank
     style PH fill:#FDF4FF,stroke:#E879F9,color:#000
     style QS fill:#F0FDFA,stroke:#2DD4BF,color:#000
     classDef phase fill:#eef4ff,stroke:#3b5bdb,stroke-width:1.5px,color:#111
-    classDef start fill:#1e3a8a,stroke:#1e3a8a,stroke-width:2px,color:#fff
     classDef quer fill:#f8f9fa,stroke:#868e96,color:#111
-    class P1,P2,P3,P4,P5 phase
-    class P0 start
+    class P0,P1,P2,P3,P4,P5,P6 phase
     class Q1,Q2,Q3 quer
 ```
 
@@ -140,7 +141,18 @@ prüfst du dann selbst im PDF. Wandert eine Zahl in eine eigene Rechnung oder
 in den Text, kommt sie mit Fundstelle ins Zahlenregister
 [`data/register.yaml`](data/register.yaml).
 
-## [3 · Sammeldokument](ablauf/3-sammeldokument.md)
+## [3 · Modell](ablauf/3-modell.md)
+
+Wahlweise, für Arbeiten, die selbst rechnen: Kosten schätzen, ein Ergebnis auf
+eine andere Gruppe umrechnen, Zahlen mehrerer Studien zusammenfassen. Die
+Eingabewerte kommen mit Fundstelle aus dem Zahlenregister; gerechnet wird in
+einem Programm, nicht von Hand. Das Programm schreibt seine Ergebnisse selbst
+an markierte Stellen im Text und erzeugt die Abbildungen. Annahmen legst du
+offen, spielst sie an den Rändern ihrer Spanne durch und hältst sie in
+[`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md) fest. Rechnet deine Arbeit nicht,
+überspringst du diesen Schritt.
+
+## [4 · Sammeldokumente](ablauf/4-sammeldokumente.md)
 
 Je Thema eine Datei, die alles zusammenträgt:
 
@@ -154,7 +166,7 @@ Je Thema eine Datei, die alles zusammenträgt:
 Nichts verschwindet still: Eine erledigte Frage bekommt einen Befund und bleibt
 stehen. Vorlage: [`vorlagen/sammeldokument.md`](vorlagen/sammeldokument.md).
 
-## [4 · Entscheidung](ablauf/4-entscheidung.md)
+## [5 · Entscheidung](ablauf/5-entscheidung.md)
 
 An den Weichen deiner Arbeit zeigt Claude Code die Optionen mit Vor- und
 Nachteilen und einer Empfehlung; entscheiden tust du. Die Entscheidung kommt
@@ -163,7 +175,7 @@ mit Begründung nach [`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md), nach der Vorlage
 als Nächstes kommt, steht in [`STAND.md`](STAND.md). Ändert sich eine
 Entscheidung, kommt ein datierter Nachtrag dazu; überschrieben wird nichts.
 
-## [5 · Schreiben](ablauf/5-schreiben.md)
+## [6 · Schreiben](ablauf/6-schreiben.md)
 
 **LaTeX oder Markdown, nicht Word.** Bei Textdateien zeigt Git Zeile für
 Zeile, was sich geändert hat. Eine Word-Datei ist dagegen gepackt: Git sieht
@@ -245,7 +257,7 @@ nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md).
 
 ```
 ├── README.md            diese Übersicht
-├── ablauf/              die Anleitungen, von 0 · Einrichten bis 5 · Schreiben
+├── ablauf/              die Anleitungen, von 0 · Einrichten bis 6 · Schreiben
 ├── BACKLOG.md           was aus der Bachelorarbeit noch ins Kit kommen könnte
 ├── CLAUDE.md            die Arbeitsregeln für Claude Code
 ├── ENTSCHEIDUNGEN.md    deine Entscheidungen mit Begründung

@@ -48,7 +48,7 @@ heraus, woher sie stammt.
 
 Die Kernaussage kommt mit Link ins Sammeldokument des Themas, unter „Was sich
 abzeichnet“. Fragen, die beim Lesen entstanden sind, kommen in dessen
-Fragenteil. Mehr dazu in [3 · Sammeldokument](3-sammeldokument.md).
+Fragenteil. Mehr dazu in [4 · Sammeldokumente](4-sammeldokumente.md).
 
 ## Woran der Wächter dich erinnert
 
@@ -60,4 +60,5 @@ Fragenteil. Mehr dazu in [3 · Sammeldokument](3-sammeldokument.md).
 Die Prüfliste kannst du an deine Arbeit anpassen, siehe
 [README, „Vorlagen anpassen“](../README.md#vorlagen-anpassen).
 
-Weiter: [3 · Sammeldokument](3-sammeldokument.md) · zurück zur [Übersicht](../README.md)
+Weiter: [3 · Modell](3-modell.md), falls deine Arbeit selbst rechnet, sonst
+[4 · Sammeldokumente](4-sammeldokumente.md) · zurück zur [Übersicht](../README.md)

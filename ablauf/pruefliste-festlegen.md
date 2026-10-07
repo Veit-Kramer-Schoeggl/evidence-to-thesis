@@ -37,7 +37,7 @@ technische Arbeit eher Punkte zu Software oder Messgeräten.
 6. **Festhalten.** Die Prüfliste ist eine Weichenstellung. Sie bekommt einen
    Eintrag in [`ENTSCHEIDUNGEN.md`](../ENTSCHEIDUNGEN.md): welche Punkte du
    gestrichen oder ergänzt hast, und warum. Siehe
-   [4 · Entscheidung](4-entscheidung.md).
+   [5 · Entscheidung](5-entscheidung.md).
 7. **Prüfen.**
    > „Prüfe, ob die Vorlage und der Wächter zusammenpassen.“
 

@@ -1,4 +1,4 @@
-# 3 · Sammeldokument
+# 4 · Sammeldokumente
 
 **Worum es geht:** je Thema an einer Stelle zusammentragen, was die
 Auswertungen ergeben, was offen ist und was in deine Arbeit kommt.
@@ -33,4 +33,4 @@ Wächter die Links auf geprüfte Auswertungen.
 > „Fasse den Stand des Themas schlaf in der Kurzfassung zusammen.“
 > Claude Code entwirft, du prüfst.
 
-Weiter: [4 · Entscheidung](4-entscheidung.md) · zurück zur [Übersicht](../README.md)
+Weiter: [5 · Entscheidung](5-entscheidung.md) · zurück zur [Übersicht](../README.md)

@@ -1,4 +1,4 @@
-# 5 · Schreiben
+# 6 · Schreiben
 
 **Worum es geht:** aus dem Gesammelten den Text machen, und zwar in einem
 Format, das Git versionieren kann.

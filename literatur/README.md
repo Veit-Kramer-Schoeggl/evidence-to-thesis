@@ -28,4 +28,4 @@ python3 tools/neu.py auswertung schlaf Mustermann2020
 Volltext, Auswertung und Literaturangabe tragen denselben Namen, den
 Zitierschlüssel aus [`literatur.bib`](../literatur.bib). Mehr dazu in
 [1 · Recherche](../ablauf/1-recherche.md), [2 · Auswertung](../ablauf/2-auswertung.md)
-und [3 · Sammeldokument](../ablauf/3-sammeldokument.md).
+und [4 · Sammeldokumente](../ablauf/4-sammeldokumente.md).

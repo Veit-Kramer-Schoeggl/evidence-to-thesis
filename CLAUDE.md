@@ -75,9 +75,10 @@ vor und erkläre jeden Schritt in einem Satz:
 
 ## Ablauf, kurz
 
-Recherche (`notes/recherche/`) → Volltext (`literatur/<kategorie>/pdf/`) →
+Einrichten → Recherche (`notes/recherche/`) → Volltext (`literatur/<kategorie>/pdf/`) →
 Auswertung mit Prüfliste (`literatur/<kategorie>/<Schlüssel>_auswertung.md`) →
-Sammeldokument → Entscheidung ([`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md)) → Text (`arbeit/`).
+wahlweise Modell (`analysis/`) → Sammeldokument → Entscheidung
+([`ENTSCHEIDUNGEN.md`](ENTSCHEIDUNGEN.md)) → Text (`arbeit/`).
 Den Stand und die nächsten Schritte hält [`STAND.md`](STAND.md) fest. Die Anleitung zu
 jedem Schritt steht in `ablauf/`, die Übersicht im README.
 

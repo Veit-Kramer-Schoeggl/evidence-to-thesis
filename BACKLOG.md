@@ -9,6 +9,9 @@ In deinem eigenen Repository kannst du diese Datei löschen.
 
 ## Rechnen mit Zahlen aus der Literatur
 
+Wie man dabei vorgeht, beschreibt schon [3 · Modell](ablauf/3-modell.md); die
+Werkzeuge dafür fehlen noch:
+
 - **Ein Rechenprogramm mit einer Liste seiner Eingabewerte.** Jeder
   Eingabewert verweist auf seinen Eintrag im Zahlenregister. Der Wächter weist
   Werte zurück, deren Quelle als „nicht belastbar“ eingestuft ist.
