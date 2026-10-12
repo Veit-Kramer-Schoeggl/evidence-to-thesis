@@ -32,8 +32,9 @@ an, aber lass die Grundregeln stehen.
 8. **Nichts still ändern.** Ältere Entscheidungen und Statusvermerke bleiben
    stehen und bekommen einen datierten Nachtrag („Nachgezogen <Datum>: …“).
 9. **KI-Einsatz protokollieren.** Nach jedem Arbeitsgang ein Eintrag in
-   [`KI-PROTOKOLL.md`](KI-PROTOKOLL.md) (Vorlage: [`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md)): was die KI
-   gemacht hat und was am Original geprüft wurde.
+   [`KI-PROTOKOLL.md`](KI-PROTOKOLL.md) (Vorlage: [`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md)): welches Werkzeug
+   in welcher Version (bei Claude Code mit Modell), was die KI gemacht hat und
+   was am Original geprüft wurde.
 10. **Wächter nicht umgehen.** Commits laufen durch [`tools/pruefe.py`](tools/pruefe.py) und die
     Tests. `git commit --no-verify` nur bewusst, mit Grund im Protokoll.
 11. **Git ist Pflicht.** Nach jedem abgeschlossenen Arbeitsschritt ein Commit

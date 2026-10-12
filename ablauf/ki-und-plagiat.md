@@ -23,16 +23,28 @@ sondern deine Hochschule und deine Betreuung.
    deine Arbeit.
 
 > **Beispiel: FH JOANNEUM, Institut eHealth.** Stand: „Leitfaden für
-> wissenschaftliche Arbeiten bei GEB und EHT“, Version 2.0 vom Oktober 2024,
-> und die LaTeX-Vorlage für Abschlussarbeiten, Fassung 2024-05.
-> - **Zitieren von KI (Leitfaden, Abschnitt 6.3):** Erzeugt die KI Wissen oder
->   inhaltliche Passagen, zitierst du sie nach APA. Übersetzt sie nur oder
->   verbessert sie den Stil, entfällt das Zitat; das erläuterst du allenfalls
->   im Methodenteil.
+> wissenschaftliche Arbeiten am Institut eHealth“, Version 3.0 vom Oktober
+> 2026, und die LaTeX-Vorlage für Abschlussarbeiten, Fassung 2024-05.
+> - **KI offenlegen (Leitfaden, Abschnitt 4.5.3):** Im Methodenkapitel steht
+>   ein eigener Abschnitt zur KI-Nutzung. Dort nennst du jedes KI-Werkzeug mit
+>   Name, Version und Zweck.
+> - **KI zitieren (Leitfaden, Abschnitt 6.3):** Der Leitfaden unterscheidet
+>   drei Fälle.
+>   1. Hat die KI Sprache überarbeitet, übersetzt, bei der ersten Recherche
+>      geholfen oder Ideen geliefert, zitierst du sie nicht. Sie steht ja
+>      schon im Methodenteil.
+>   2. Übernimmst du Fakten oder Aussagen, zitierst du nicht die KI, sondern
+>      die Originalquelle.
+>   3. Ist die Antwort der KI selbst Gegenstand deiner Forschungsfrage,
+>      zitierst du die KI nach APA.
+> - **Recherche mit KI (Leitfaden, Abschnitt 3):** erlaubt. Du musst aber
+>   kontrollieren, ob die gefundenen Quellen wirklich existieren.
 > - **Eidesstattliche Erklärung (Vorlage):** Du erklärst unter anderem, alle
 >   verwendeten Hilfsmittel in der Methodendarstellung oder einem Verzeichnis
 >   deklariert zu haben, ausdrücklich auch KI-Assistenzsysteme wie Chatbots,
 >   und ihre Verwendung bei den entsprechenden Textstellen angegeben zu haben.
+>   Für Fall 1 sagt der Leitfaden dagegen „nicht zitieren“. Was an den
+>   Textstellen stehen soll, klärst du mit deiner Betreuung.
 > - **Prüfung:** Laut Erklärung kann die Arbeit auf Plagiate und auf Texte
 >   fremder Herkunft geprüft werden, von Menschen (Ghostwriting) wie von
 >   KI-Systemen. Abschlussarbeiten werden mit Plagiatssoftware geprüft
@@ -43,6 +55,11 @@ sondern deine Hochschule und deine Betreuung.
 >
 > Diese Zusammenfassung ersetzt die Dokumente nicht. Maßgeblich ist ihre
 > jeweils gültige Fassung.
+>
+> **Regeln ändern sich.** Nach Version 2.0 vom Oktober 2024 musstest du die KI
+> noch nach APA zitieren, sobald sie Wissen oder inhaltliche Passagen erzeugt
+> hatte. Prüf deshalb vor dem Schreiben, welche Fassung gerade gilt, und
+> vermerke im KI-Protokoll, nach welcher Fassung du eingeordnet hast.
 
 ## 2. Was als Plagiat gilt
 
@@ -101,6 +118,10 @@ Anthropic. Kläre deshalb vorher:
   [`vorlagen/ki-protokoll-eintrag.md`](../vorlagen/ki-protokoll-eintrag.md).
 - Wie du offenlegst, im Methodenteil, in einem Verzeichnis oder mit Zitat an
   der Textstelle, bestimmt der Leitfaden deiner Hochschule.
+- Halte bei jedem Werkzeug **Name und Version** fest, bei Claude Code auch das
+  Modell. Manche Leitfäden verlangen beides, etwa für einen eigenen Abschnitt
+  im Methodenteil. Die Version zeigt der Befehl `claude --version`; welches
+  Modell gerade arbeitet, zeigt `/status` in Claude Code.
 - Am Ende übernimmst du daraus die Angaben in deine Arbeit.
 
 Weiter: [0 · Einrichten](0-einrichten.md) · siehe auch

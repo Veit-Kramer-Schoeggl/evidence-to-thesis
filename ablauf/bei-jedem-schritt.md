@@ -121,6 +121,7 @@ Nach jedem Arbeitsgang mit KI kommt ein Eintrag in [`KI-PROTOKOLL.md`](../KI-PRO
 Vorlage [`vorlagen/ki-protokoll-eintrag.md`](../vorlagen/ki-protokoll-eintrag.md). Er hält fest:
 
 - den Auftrag,
+- das Werkzeug mit Version, bei Claude Code auch das Modell,
 - was die KI getan hat,
 - was du selbst am Original geprüft hast,
 - was davon in deine Arbeit geht.

@@ -260,9 +260,10 @@ mehr stimmt. Dafür sind die Prüfliste und dein eigener Blick da.
 Nach jedem Arbeitsgang mit KI kommt ein Eintrag in
 [`KI-PROTOKOLL.md`](KI-PROTOKOLL.md), nach der Vorlage
 [`vorlagen/ki-protokoll-eintrag.md`](vorlagen/ki-protokoll-eintrag.md): der
-Auftrag, was die KI getan hat, was du selbst am Original geprüft hast. 🤖 Claude
-Code schreibt den Eintrag, 🚶 du ergänzt, was du geprüft hast. Was an
-KI-Nutzung erlaubt ist, regelt der Leitfaden deiner Hochschule, siehe
+Auftrag, das Werkzeug mit Version, was die KI getan hat, was du selbst am
+Original geprüft hast. 🤖 Claude Code schreibt den Eintrag, 🚶 du ergänzt, was
+du geprüft hast. Was an KI-Nutzung erlaubt ist, regelt der Leitfaden deiner
+Hochschule, siehe
 [KI, Plagiat und Eidesstattliche Erklärung](ablauf/ki-und-plagiat.md). Die
 Regeln, nach denen Claude Code hier arbeitet, stehen in [`CLAUDE.md`](CLAUDE.md).
 

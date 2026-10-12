@@ -1,13 +1,15 @@
 ### <Datum>, Durchgang <n> — <worum es ging>
 
 - **Auftrag:** was verlangt war, möglichst im Wortlaut.
-- **Werkzeug:** welcher KI-Assistent oder Suchdienst, welches Modell, wenn bekannt.
+- **Werkzeug:** welcher KI-Assistent oder Suchdienst, mit Version; bei
+  Sprachmodellen auch das Modell, etwa „Claude Code <Version>, Modell <Name>“.
 - **Gemacht:** was die KI getan hat (gesucht, ausgewertet, gerechnet, formuliert).
 - **Geprüft:** was du selbst am Original geprüft hast, und mit welchem Ergebnis.
 - **Übernommen:** was davon in die Arbeit geht, und wo.
 
-**Einzuordnen als.** Art der Nutzung nach dem Leitfaden deiner Hochschule,
-z. B. Recherche, Strukturierung, Formulierungshilfe, Code.
+**Einzuordnen als.** Art der Nutzung nach dem Leitfaden deiner Hochschule, in
+seinen Begriffen und nach seiner gültigen Fassung, z. B. Recherche,
+Strukturierung, Formulierungshilfe, Code.
 
 > **Optionen**
 > - **Je Arbeitsgang** ein Eintrag wie oben, oder **je Sitzung** einer, der
@@ -19,6 +21,7 @@ z. B. Recherche, Strukturierung, Formulierungshilfe, Code.
 >
 > **Beispiel:** „<Datum>, Durchgang <n> — Suchanfrage für PubMed. Auftrag:
 > ‚Formuliere eine Suchanfrage zu Schlafdauer und Studienerfolg.‘ Werkzeug:
-> Claude Code. Gemacht: Suchanfrage vorgeschlagen. Geprüft: in PubMed selbst
-> ausgeführt, die ersten Treffer gesichtet, Suchbegriffe ergänzt. Übernommen:
-> Suchanfrage im Rechercheprotokoll. Einzuordnen als: Recherche.“
+> Claude Code <Version>, Modell <Name>. Gemacht: Suchanfrage vorgeschlagen.
+> Geprüft: in PubMed selbst ausgeführt, die ersten Treffer gesichtet,
+> Suchbegriffe ergänzt. Übernommen: Suchanfrage im Rechercheprotokoll.
+> Einzuordnen als: Recherche.“
