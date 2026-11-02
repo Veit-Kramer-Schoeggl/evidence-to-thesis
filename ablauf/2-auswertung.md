@@ -38,6 +38,12 @@ python3 tools/neu.py --knapp auswertung schlaf Mustermann2020
 - **Status:** „in Arbeit“, solange du liest. „geprüft“, wenn alles abgehakt
   ist und die Auswertung im Sammeldokument verlinkt ist.
 
+**Wie tief?** Das zeigt [das Beispiel an einer echten Studie](beispiel-auswertung.md):
+eine fertige Auswertung, jede Zahl mit Seite, dazu Kästen, die erklären,
+worauf es an einer Stelle ankommt. Gründlich lesen heißt dort vor allem: die
+Vergleichsgruppe wörtlich nehmen, auf die Zahl der Ereignisse achten und
+prüfen, ob zwei Zahlen wirklich unter gleichen Bedingungen entstanden sind.
+
 Claude Code kann aus dem Volltext eine erste Fassung schreiben. **Prüf dann
 jede Zahl selbst im PDF** und vermerke das im KI-Protokoll. KI-Assistenten
 lesen manchmal die falsche Zeile einer Tabelle ab oder verwechseln

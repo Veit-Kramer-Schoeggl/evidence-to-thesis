@@ -13,7 +13,8 @@
 > hilft, und streich den Rest. Die Blöcke **Optionen** und **Beispiel** helfen
 > beim Ausfüllen und kommen danach weg; [`tools/neu.py`](/tools/neu.py) mit `--knapp` legt die
 > Datei gleich ohne sie an. Die Beispiele sind erfunden und zeigen nur die
-> Form. Zahlen darin sind Platzhalter (`<n>`, `0,XX`, `S. N`).
+> Form. Zahlen darin sind Platzhalter (`<n>`, `0,XX`, `S. N`). Eine fertige
+> Auswertung an einer echten Studie zeigt [`ablauf/beispiel-auswertung.md`](/ablauf/beispiel-auswertung.md).
 >
 > Fest ist nur, was der Wächter liest:
 > - die Kopfzeile mit Zweck und Status;

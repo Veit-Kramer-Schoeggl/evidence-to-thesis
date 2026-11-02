@@ -148,9 +148,11 @@ Volltexte kommen nie ins Repository; sie sind urheberrechtlich geschützt.
 Jede Arbeit genau lesen, nach der Prüfliste, jede Zahl mit Fundstelle. Die
 Auswertung entsteht aus der Vorlage
 [`vorlagen/auswertung.md`](vorlagen/auswertung.md): Jeder Abschnitt bietet
-Optionen und ein erfundenes Beispiel. Der Status „in Arbeit“ gilt, solange du
-liest; „geprüft“, wenn alles abgehakt und die Auswertung im Sammeldokument
-verlinkt ist.
+Optionen und ein erfundenes Beispiel. Wie eine fertige Auswertung aussieht,
+wie tief sie geht und wo die Fallen einer Studie liegen, zeigt
+[das Beispiel an einer echten Studie](ablauf/beispiel-auswertung.md). Der
+Status „in Arbeit“ gilt, solange du liest; „geprüft“, wenn alles abgehakt und
+die Auswertung im Sammeldokument verlinkt ist.
 
 🤖 Claude Code kann aus dem Volltext eine erste Fassung schreiben. 🚶 Jede Zahl
 prüfst du dann selbst im PDF. 💻 Der Wächter prüft, ob die Auswertung
@@ -317,6 +319,7 @@ Dateien da sind, erklärt [Die Bausteine und wozu sie da sind](ablauf/bausteine.
 │   ├── <a href="ablauf/0-einrichten.md">0-einrichten.md</a>                   0 · Einrichten
 │   ├── <a href="ablauf/1-recherche.md">1-recherche.md</a>                    1 · Recherche
 │   ├── <a href="ablauf/2-auswertung.md">2-auswertung.md</a>                   2 · Auswertung
+│   ├── <a href="ablauf/beispiel-auswertung.md">beispiel-auswertung.md</a>            so sieht eine fertige Auswertung aus
 │   ├── <a href="ablauf/3-modell.md">3-modell.md</a>                       3 · Modell, wahlweise
 │   ├── <a href="ablauf/4-sammeldokumente.md">4-sammeldokumente.md</a>              4 · Sammeldokumente
 │   ├── <a href="ablauf/5-entscheidung.md">5-entscheidung.md</a>                 5 · Entscheidung
